@@ -1,0 +1,20 @@
+categoria,partida,importe_eu,notas
+LOCAL,Alquiler local Oleiros (40-50m²),750,"Tu número; locales comerciales pequeños en zonas residenciales de Oleiros (Santa Cruz, Perillo, Bastiagueiro, Dorneda) rondan 650-900€ a sept 2025."
+LOCAL,Comunidad,50,""
+PERSONAL,Cuota autónoma (tarifa plana 1er año),80,"80€/mes los primeros 12 meses. En Galicia además aplica cuota cero devolución durante 2 años (lo pedís como retornados): podría ser 0€ durante periodos, pero ponemos 80€ como base conservadora."
+SUMINISTROS,Electricidad (LED, tienda pequeña),130,"Local más pequeño que lo anterior: 40-50m², LED, consumo contenido."
+SUMINISTROS,Agua,20,""
+SUMINISTROS,Fibra internet,45,""
+SERVICIOS,Gestoría,70,"Contabilidad de autónoma sencilla; gestoría pequeña de la zona."
+SEGUROS,Seguro multirriesgo + RC (prorrateado anual),35,"Local pequeño: seguro anual 380-480€ prorrateado."
+WEB,Hosting + dominio prorrateado,10,""
+MARKETING,Publicidad mensual redes (Instagram+Facebook+TikTok segmentando Oleiros/A Coruña),250,"Presupuesto ajustado para el principio: 8-9€/día de publicidad segmentada a padres y madres con hijos en el área. Es suficiente para tener presencia continua; más adelante subes si va bien."
+MARKETING,Colaboraciones/influencers locales/producto para regalos,50,""
+MARKETING,Bolsas/consumibles marketing y embalaje web,40,""
+CONSUMIBLES,Consumibles TPV, etiquetas, limpieza, material oficina,40,""
+MANTENIMIENTO,Pequeños arreglos y mantenimiento,30,""
+BANCA,Gastos cuenta + comisiones base,20,""
+VARIOS,Imprevistos reserva mensual,50,""
+TOTAL,GASTOS FIJOS MENSUALES KHC (Oleiros),1670,"≈ 1.700€/mes. Con la cuota cero de Galicia si la conceden serían ~1.600€/mes."
+DESGLOSE,"Importante: estos 1.700€/mes INCLUYEN TODO: alquiler, su cuota de autónoma, luz, internet, gestoría, seguro, marketing de 340€/mes, consumibles. NO incluye sueldo para ella los primeros meses.",,,,,
+DESGLOSE_BREAK_EVEN,Para cubrir estos 1.700€/mes con margen 70%: hay que facturar 1.700 / 0,70 = 2.430€/mes, es decir ~94€/día (abriendo 26 días),,,,,
