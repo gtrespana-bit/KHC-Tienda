@@ -43,23 +43,20 @@ SECTION_22 = [
             ["VAN al 5 % (5 años)", "+36.920 €"],
             ["TIR", "42,0 %"],
             ["Plazo de recuperación", "2,6 años"],
+            ["Retribución promotora", "Año 1: 0 € (el local primero) · Año 2: 6.000 €/año · Año 5: 12.500 €/año — regla de la sección 8.3"],
         ],
         widths=[0.62, 0.38], left_cols=[0, 1],
     ),
 
-    P("**Ayudas y subvenciones que se van a solicitar (por orden de prioridad):**"),
-    TABLE(
-        ["Ayuda", "Órgano", "Importe estimado", "Estado"],
-        [
-            ["Cuota cero de Galicia (nuevos autónomos)", "IGAPE / Xunta de Galicia", "Devolución de cuotas hasta 2 años", "A solicitar antes del alta"],
-            ["Tarifa plana de autónomos", "Seguridad Social", "Ahorro ~1.800–2.600 € primer año", "Automática al darse de alta"],
-            ["Ayudas a personas retornadas (autoempleo)", "Secretaría Xeral da Emigración", "3.000–10.000 €", "A solicitar al llegar / antes del alta"],
-            ["Subvención a la modernización del comercio", "Consellería de Economía, Empresa e Innovación", "30–50 % de reforma y equipamiento", "Convocatoria anual"],
-            ["Kit Digital (web, e-commerce, redes, TPV)", "Red.es / acelerapyme", "Bono 2.000–12.000 €", "Convocatorias continuas"],
-            ["Programas de apoyo a mujeres emprendedoras", "Instituto de la Mujer / Xunta", "Microcréditos o subvenciones", "Según convocatoria"],
-        ],
-        widths=[0.34, 0.24, 0.24, 0.18], left_cols=[0],
-    ),
+    P("**Ayudas que se van a solicitar** (importes, órganos y plazos en la sección 17, sin repetirlos aquí):"),
+    CHECKBOXES([
+        "**Cuota cero de Galicia** (IGAPE) — nuevos autónomos, devolución de cuotas hasta 2 años",
+        "**Tarifa plana de autónomos** (Seguridad Social) — 80 €/mes el primer año",
+        "**Ayudas a personas retornadas** (Secretaría Xeral da Emigración) — autoempleo, 3.000–10.000 €",
+        "**Modernización del comercio minorista** (Consellería de Economía) — 30–50 % de reforma y equipamiento",
+        "**Kit Digital** (Red.es) — web, e-commerce, redes y TPV",
+        "**Programas de apoyo a mujeres emprendedoras** (Instituto de la Mujer / Xunta)",
+    ]),
     CALLOUT("success", "Pendiente antes de presentar la solicitud",
             "Confirmar el **nombre y NIE/DNI de la promotora**, el **CNAE definitivo** con el gestor, la **ficha catastral y referencia del local** si ya está elegido, los **presupuestos** (reforma, mobiliario, pedido a China) y el **certificado de emigrante retornado**. Con todo eso, la solicitud se presenta en 2–3 horas."),
 ]

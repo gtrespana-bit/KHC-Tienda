@@ -10,7 +10,7 @@ META = {
     "document": "Plan de Negocio",
     "subtitle": "Tienda de moda infantil 0–12 años · Marca propia",
     "location": "Oleiros · A Coruña · Galicia",
-    "edition": "Edición Septiembre 2026 · v1.5",
+    "edition": "Edición Septiembre 2026 · v1.7",
     "confidential": "Documento de trabajo — cifras orientativas, en revisión continua",
 }
 
@@ -153,15 +153,7 @@ SECTION_1 = [
         ("4–7 meses", "TIEMPO HASTA ABRIR", "Desde hoy hasta apertura: local → reformas → primer pedido China"),
     ]),
 
-    P("**El modelo, en cuatro piezas:**"),
-    GRID([
-        ("🧵", "Marca propia", "Fábricas chinas producen con la etiqueta KHC: margen ~70 % frente al 55–60 % de la reventa."),
-        ("📍", "Tienda de barrio", "Oleiros: familias jóvenes, nivel adquisitivo medio-alto y poca competencia infantil."),
-        ("🌐", "Online + redes", "Web propia y marketing local de 340 €/mes: la tienda se ve cada semana, no solo el día de apertura."),
-        ("🔄", "Stock corto", "Novedades cada 3–4 semanas: poco capital atrapado y clientela que vuelve."),
-    ]),
-
-    P("**Por qué funciona.** No compite por precio con las multinacionales ni por volumen con el online: compite por **proximidad, marca y novedad**. Con gastos fijos de 1.670 €/mes y margen del 70 %, bastan **~92 € al día** —3–4 clientes de 25 €— para no perder dinero. Y hay dos ventajas que pocos proyectos tienen: la reforma la hace vuestra empresa (solo se paga material) y los ingresos de esa actividad cubren lo personal los primeros meses, lo que baja la inversión en ~4.000 €."),
+    P("**Por qué funciona.** KHC no compite por precio con las multinacionales ni por volumen con el online: compite por **proximidad, marca y novedad**. Y tiene dos ventajas que casi ningún proyecto nuevo tiene: la reforma la hace vuestra propia empresa (solo se paga material) y los ingresos de esa actividad cubren lo personal los primeros meses, de modo que la tienda puede consolidarse sin ahogarse. El modelo completo (producto, canales y rotación) se detalla en la sección 02."),
 
     P("**Las 6 ventajas diferenciales, en una lista:**"),
     CHECKBOXES([
@@ -173,21 +165,7 @@ SECTION_1 = [
         "**Stock reducido + rotación rápida:** cero mercancía vieja y capital siempre líquido.",
     ]),
 
-    TABLE(
-        ["El plan, en cifras", "Valor", "Dónde se detalla"],
-        [
-            ["Inversión total (todo incluido)", "21.010 €", "Sección 06"],
-            ["Gastos fijos mensuales", "1.670 €/mes", "Sección 07"],
-            ["Punto de equilibrio", "92 €/día · 2.390 €/mes", "Sección 08"],
-            ["Ventas año 1 (escenario base)", "32.960 €", "Sección 10"],
-            ["Beneficio neto año 5", "14.770 €", "Sección 11"],
-            ["VAN · TIR · recuperación", "+36.920 € · 42 % · 2,6 años", "Sección 11"],
-        ],
-        widths=[0.40, 0.30, 0.30], left_cols=[0, 1], hl=[0],
-    ),
-
-    CALLOUT("tip", "Cómo leer este plan (para no perderse)",
-            "Tres rutas según lo que necesites: **solo números** → secciones 06, 07, 08, 10, 11, 12 y 13 (inversión, gastos, márgenes, proyecciones, tesorería y sensibilidad). **Para la solicitud de ayudas** → 02.2 (equipo y empleo), 02.3 (sostenibilidad e igualdad), 17 (ayudas) y 22 (ficha de 1 página). **Para arrancar esta semana** → 02.1 (local), 17, 18 (hoja de ruta) y 21 (próximos pasos). Cada sección abre con un recuadro «Lo esencial»: si solo tienes 2 minutos, léelos y ya tienes el plan."),
+    P("**Cómo leerlo:** las cifras están en las secciones 06–13 (sin repetirse), las ayudas en la 17 y la ficha lista para formularios en la 22. Cada sección abre con «Lo esencial», su resumen de 20 segundos."),
 ]
 
 # SECCIÓN 2 · EL PROYECTO Y EL MODELO DE NEGOCIO
@@ -217,17 +195,7 @@ SECTION_2 = [
 
     QUOTE("«No hay que llenar la tienda de stock: hay que llenarla de novedad. Un niño crece cada mes, y su familia tiene un motivo para volver cada mes.»"),
 
-    P("**Quién hace qué.**"),
-    TABLE(
-        ["Rol", "Quién", "Qué aporta"],
-        [
-            ["Dirección y venta", "Ella", "Gestión diaria, atención al cliente, compras, redes sociales y operativa de la tienda"],
-            ["Acondicionamiento del local", "Tú (empresa de reformas)", "Reforma completa a coste de materiales (1.900 €): pintura, suelo vinílico, iluminación y probador"],
-            ["Web y tecnología", "Tú", "Tienda online, dominio/hosting (≈10 €/mes), TPV, cámaras y soporte"],
-            ["Estrategia y números", "Ambos", "Plan de negocio, pedidos a China, análisis de rotación y finanzas"],
-        ],
-        widths=[0.22, 0.33, 0.45], left_cols=[0],
-    ),
+    P("**Quién hace qué, en una frase:** ella dirige y vende (a jornada completa), él hace la reforma a coste de materiales y la web, y la estrategia la llevan los dos. El reparto detallado por roles, horas y previsión de empleo está en la sección 2.2."),
 
     CALLOUT("info", "Forma jurídica inicial: autónoma",
             "Se empieza como **autónoma** con tarifa plana (80 €/mes el primer año) y, en Galicia, con la **cuota cero** para nuevos autónomos (devolución de cuotas durante hasta 2 años sujeto a requisitos). El cambio a **SL** se valora cuando la facturación estable supere **60.000 €/año**. Detalle completo en la sección 16."),

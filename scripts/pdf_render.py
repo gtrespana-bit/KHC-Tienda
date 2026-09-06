@@ -716,7 +716,7 @@ SHORT_TITLES = {
  "05.1":"Fábricas y agentes","05.2":"MOQ y plazos","05.3":"Calidad y pagos",
  "05.4":"Fabricar vs comprar","05.5":"Checklist del pedido","06":"Inversión inicial",
  "07":"Gastos fijos","08":"Márgenes y equilibrio","08.1":"Escenarios de venta",
- "08.2":"Fondo de maniobra","09":"Visión de crecimiento","09.1":"Las palancas","11.1":"Rentabilidad de la inversión",
+ "08.2":"Fondo de maniobra","08.3":"¿Cuándo cobra la propietaria?","09":"Visión de crecimiento","09.1":"Las palancas","11.1":"Rentabilidad de la inversión",
  "10":"Proyección de ingresos","11":"Proyección a 5 años","12":"Plan de tesorería",
  "13":"Sensibilidad y escenarios","14":"DAFO y plan estratégico","14.1":"Objetivos medibles",
  "15":"Marketing y ventas","16":"Forma jurídica","17":"Ayudas y financiación",
