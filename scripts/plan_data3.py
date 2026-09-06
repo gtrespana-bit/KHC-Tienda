@@ -88,8 +88,8 @@ SECTION_11 = [
         ],
         widths=[0.30, 0.14, 0.14, 0.14, 0.14, 0.14], left_cols=[0, 1, 2, 3, 4, 5], hl=[8],
     ),
-    CALLOUT("info", "Supuestos de la cuenta de resultados (para que sea auditables)",
-            "**Ventas:** año 1 = 32.960 € (proyección mensual de la sección 10); crecimiento del 36 % en el año 2 por fidelización, online y calzado; después 22 %, 13 % y 13 %. **Margen:** 70 % estable, sube a 71–72 % cuando el mix se enriquece con regalo y online. **Gastos de estructura:** año 1 = 1.670 €/mes; año 2 suben por el fin de la tarifa plana (cuota autónoma ~300 €/mes) y más marketing; año 3 se incorpora una ayuda a media jornada; años 4–5 crecen por marketing y segunda tienda en estudio. **Amortización:** 800 €/año de los activos fijos (~3.920 € a 5 años: reformas, mobiliario, equipamiento, imagen); el stock no se amortiza porque rota. **No se incluyen** intereses (no se prevé deuda relevante) ni IVA (se liquida aparte)."),
+    CALLOUT("info", "Supuestos de la cuenta de resultados (para que sea auditable)",
+            "**Ventas:** año 1 = 32.960 € (proyección mensual de la sección 10); crecimiento del 36 % en el año 2 por fidelización, online y calzado; después 22 %, 13 % y 13 %. **Margen:** 70 % estable, sube a 71–72 % cuando el mix se enriquece con regalo y online. **Gastos de estructura:** año 1 = 1.670 €/mes; año 2 suben por el fin de la tarifa plana (cuota autónoma ~300 €/mes) y más marketing; año 3 se incorpora una ayudante a media jornada; años 4–5 crecen por marketing y segunda tienda en estudio. **Amortización:** 800 €/año de los activos fijos (~3.920 € a 5 años: reformas, mobiliario, equipamiento, imagen); el stock no se amortiza porque rota. **No se incluyen** intereses (no se prevé deuda relevante) ni IVA (se liquida aparte)."),
     CALLOUT("success", "La conclusión, en tres líneas",
             "**El proyecto se paga solo** (recuperación en 2,6 años, sección 11.1). **La propietaria empieza a cobrar en el año 2**, de forma gradual y con regla de seguridad (sección 8.3): 500 €/mes, subiendo hasta ~1.000 €/mes en el año 5. **El local va primero**: solo se retira sueldo cuando la caja lo aguanta sin tocar el colchón."),
     CALLOUT("warn", "Qué pasa si el año 1 no cumple (el escenario más probable)",
@@ -111,7 +111,7 @@ SECTION_11 = [
     ),
     P("**Lectura honesta.** El VAN y la TIR son tan altos porque el modelo no paga nóminas los primeros años y porque la inversión es contenida (reformas y web a coste propio, stock rotativo). Es exactamente lo que un inversor o una convocatoria quieren ver: **una inversión moderada con flujos crecientes y recuperación en menos de 3 años**, y al mismo tiempo el plan reconoce que el año 1 puede cerrar en números rojos si las ventas no acompañan (escenario de la sección 13)."),
     CALLOUT("tip", "Cómo se trata esta inversión en la solicitud de ayudas",
-            "La inversión subvencionable habitual en comercio minorista incluye: reforma y adecuación del local (materiais y obra), mobiliario y equipamiento, marca e imagen (rótulo, etiquetas, packaging), digitalización (web, TPV, cámaras) y stock inicial en algunos programas. Las ayudas suelen cubrir el **30–50 %** del gasto elegible: es la palanca que convierte los 21.010 € en una inversión neta de ~15.000 €. Se detalla en la sección 17."),
+            "La inversión subvencionable habitual en comercio minorista incluye: reforma y adecuación del local (materiales y obra), mobiliario y equipamiento, marca e imagen (rótulo, etiquetas, packaging), digitalización (web, TPV, cámaras) y stock inicial en algunos programas. Las ayudas suelen cubrir el **30–50 %** del gasto elegible: es la palanca que convierte los 21.010 € en una inversión neta de ~15.000 €. Se detalla en la sección 17."),
 ]
 
 # ============================================================================
@@ -128,7 +128,7 @@ SECTION_12 = [
         ["Fuente", "Importe", "Cuándo entra", "Notas"],
         [
             ["Aportación de los promotores (ahorros)", "15.000 €", "Meses −4 a 0, escalonado", "Capital propio; sin intereses ni devolución"],
-            ["Ayudas y subvenciones (tramo más probable de ahorro/devolución)", "3.000 €", "Primer año (cuotas y devoluciones)", "Cuota cero Galicia, tarifa plana, retornadas y modernización — sección 17"],
+            ["Ayudas y subvenciones (parte más probable de recuperar)", "3.000 €", "Primer año (cuotas y devoluciones)", "Cuota cero Galicia, tarifa plana, retornadas y modernización — sección 17"],
             ["Financiación bancaria (MicroBank / ICO / SGR AFIGAL)", "3.010 €", "Mes 0, solo si procede", "Línea emprendedores hasta 25.000 € sin aval; si las ayudas se confirman, esta partida desaparece y el excedente engorda el colchón"],
             ["**Total**", "**21.010 €**", "**—**", "**Desembolso escalonado en ~4 meses**"],
         ],

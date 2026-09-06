@@ -10,7 +10,7 @@ META = {
     "document": "Plan de Negocio",
     "subtitle": "Tienda de moda infantil 0–12 años · Marca propia",
     "location": "Oleiros · A Coruña · Galicia",
-    "edition": "Edición Septiembre 2026 · v1.7",
+    "edition": "Edición Septiembre 2026 · v1.7.1",
     "confidential": "Documento de trabajo — cifras orientativas, en revisión continua",
 }
 
@@ -141,6 +141,7 @@ SECTION_1 = [
       ess=["Inversión: 21.010 € con todo incluido para abrir",
            "Margen ~70 % por marca propia → equilibrio a 92 €/día",
            "Año 1: 32.960 € de ventas y caja que no baja de 2.700 €",
+           "La propietaria cobra desde el año 2: 0 € el año 1 → 500 €/mes (regla: el local primero)",
            "VAN +36.920 € · TIR 42 % · recuperación en 2,6 años"]),
     LEAD("**La idea en una frase:** ropa infantil de calidad media-alta con marca propia, vendida en una tienda cercana donde los padres vuelven cada mes a ver novedades."),
 

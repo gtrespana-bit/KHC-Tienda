@@ -19,7 +19,7 @@ SECTION_22 = [
             ["Persona promotora / titular", "[Nombre] — mujer emprendedora, retornada de Venezuela (ayudas a emigrantes retornados)"],
             ["Ubicación del negocio", "Oleiros (A Coruña, Galicia) — zona de Santa Cruz / Perillo / Bastiagueiro"],
             ["Forma de acceso al local", "Alquiler: ~750 €/mes, local de 40–50 m²"],
-            ["N° de empleos que se crean", "1,0 en el año 1 · 1,5 en el año 3 · 2,0 en el año 5"],
+            ["N.º de empleos que se crean", "1,0 en el año 1 · 1,5 en el año 3 · 2,0 en el año 5"],
             ["Público objetivo", "Familias con niños de 0–12 años de Oleiros y área de A Coruña (+ venta online a toda España)"],
             ["Fecha prevista de inicio", "[Mes/año] — apertura prevista 4–7 meses después de la firma del local"],
             ["Fase del proyecto", "Pre-apertura: local en búsqueda, presupuesto cerrado, proveedor en selección"],
