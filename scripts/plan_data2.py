@@ -66,7 +66,7 @@ SECTION_6 = [
 SECTION_7 = [
     S("07", "GASTOS FIJOS MENSUALES", "1.670 €/mes y cada euro explicado",
       "Los gastos fijos incluyen TODO lo que hay que pagar cada mes funcione o no la tienda: alquiler, cuota de autónoma, suministros, gestoría, seguro, web y marketing continuo. No incluyen sueldo durante los primeros meses ni el coste de la mercancía (que es variable: solo se paga si se vende).",
-      ess=["1.670 €/mes con TODO incluido", "Alquiler y comunidad: 800 €/mes · Marketing: 340 €/mes", "Cuota autónoma 80 € (tarifa plana) y cuota cero en Galicia", "Sin sueldo al inicio: el punto de equilibrio baja a 92 €/día"]),
+      ess=["1.670 €/mes con TODO incluido (sin sueldo)", "Alquiler y comunidad: 800 €/mes · Marketing: 340 €/mes", "Cuota autónoma 80 € (tarifa plana) y cuota cero en Galicia", "Con sueldo de 1.500 €/mes: equilibrio de 191 €/día (sección 8.1)"]),
 
     BARS("Desglose mensual de los 1.670 €", "€/mes", [
         ("Alquiler + comunidad", 800, COLORS["navy"]),
@@ -108,7 +108,7 @@ SECTION_7 = [
 SECTION_8 = [
     S("08", "MÁRGENES Y PUNTO DE EQUILIBRIO", "Cuánto hay que vender para no perder dinero (y para vivir)",
       "Esta es la sección que convierte el plan en números útiles: margen bruto del ~70 % sobre el coste real puesto en tienda, punto de equilibrio diario, escenarios de sueldo y la justificación del fondo de maniobra de 4.000 €.",
-      ess=["Margen medio ~70 %; complementos y regalo hasta el 90 %", "Equilibrio tienda: 2.390 €/mes ≈ 92 €/día (3–4 clientes de 27 €)", "Sueldo 800 € → 144 €/día · 1.000 € → 158 €/día · 2.000 € → 224 €/día", "El sueldo de la promotora se paga desde el mes 1 (sección 8.3)"]),
+      ess=["Margen medio ~70 %; complementos y regalo hasta el 90 %", "Equilibrio tienda: 2.390 €/mes ≈ 92 €/día (≈ 4 clientes de 50 €)", "Sueldo 1.500 € → 191 €/día · 2.000 € → 224 €/día · 2.800 € → 277 €/día", "El sueldo de la promotora se paga desde el mes 1 (sección 8.3)"]),
 
     P("**El margen bruto.** Cada prenda se compra a su coste real (fábrica + importación: factor 1,55 × FOB) y se vende a 3,4–3,9 × ese coste. Resultado: un margen bruto medio del **70 %** (68–75 % en ropa, 75–90 % en complementos y regalo, 55–60 % en marca española). Esto significa que **por cada 100 € vendidos, quedan 70 € para pagar gastos fijos y generar beneficio**; la mercancía cuesta 30 €."),
 
@@ -134,23 +134,23 @@ SECTION_8 = [
     TABLE(
         ["Escenario", "Fórmula", "Ventas/mes", "Ventas/día (26 días)", "Qué significa"],
         [
-            ["Cubrir gastos (sin sueldo)", "1.670 € ÷ 0,70", "2.386 € → 2.390 €", "≈ 92 €/día", "3–4 clientes/día de 27 €: la tienda ya no pierde dinero"],
-            ["Sueldo 800 €/mes (arranque, año 1)", "(1.670 + 960) ÷ 0,70", "≈ 3.757 € → 3.760 €", "≈ 144 €/día", "≈ 5 clientes/día: es el equilibrio del plan para el año 1"],
-            ["Sueldo 1.000 €/mes", "(1.670 + 1.200) ÷ 0,70", "≈ 4.100 €", "≈ 158 €/día", "≈ 6 clientes/día; objetivo del año 2 con online"],
-            ["Sueldo 2.000 €/mes", "(1.670 + 2.400) ÷ 0,70", "≈ 5.814 € → 5.800 €", "≈ 224 €/día", "≈ 8–9 clientes/día; objetivo desde el año 3"],
+            ["Cubrir gastos (sin sueldo)", "1.670 € ÷ 0,70", "2.386 € → 2.390 €", "≈ 92 €/día", "≈ 4 clientes/día de 50 €: la tienda ya no pierde dinero"],
+            ["Sueldo 1.500 €/mes (año 1)", "(1.670 + 1.800) ÷ 0,70", "≈ 4.957 € → 4.960 €", "≈ 191 €/día", "≈ 4–5 clientes de 50 € o 3–4 con regalo: el equilibrio del año 1"],
+            ["Sueldo 2.000 €/mes", "(1.670 + 2.400) ÷ 0,70", "≈ 5.814 € → 5.800 €", "≈ 224 €/día", "≈ 5–6 clientes/día; se supera con holgura desde el año 2"],
+            ["Sueldo 2.800 €/mes (año 5)", "(1.670 + 3.360) ÷ 0,70", "≈ 7.186 € → 7.200 €", "≈ 277 €/día", "≈ 6–7 clientes/día o 4–5 más online: el equilibrio del año 5"],
         ],
         widths=[0.18, 0.20, 0.18, 0.18, 0.26], left_cols=[0, 1, 2, 3],
     ),
     CALLOUT("info", "El cálculo en una línea",
             "Por cada euro vendido, 0,70 € van a pagar la tienda. Por eso ventas = gastos fijos ÷ 0,70. Con sueldo se trata igual: se suma la retirada de la promotora (con un 20 % de margen de seguridad para cuota, impuestos y vacaciones) y se divide entre 0,70. **Esta es la cifra que se vigila cada semana: las ventas/día.**"),
-    P("**¿Y cuánto se cobra en cada fase?** La escalera es la siguiente: de 800 €/mes en el año 1 a 2.100 €/mes en el año 5, con la regla de seguridad «el local primero» — todo detallado en la sección 8.3."),
+    P("**¿Y cuánto se cobra en cada fase?** La escalera es la siguiente: **1.500 €/mes en el año 1 → 2.800 €/mes en el año 5** con la regla de seguridad «el local primero» — todo detallado en la sección 8.3."),
 
     S("08.2", "FONDO DE MANIOBRA", "Por qué 4.000 € y no 0 € ni 8.000 €"),
-    P("El fondo de maniobra **no es un gasto**: es dinero en la cuenta de la tienda para pagar facturas cuando las ventas todavía no cubren los gastos. Con sueldo de 800 €/mes desde el mes 1, el desembolso mensual completo es de **2.470 €** (1.670 € de gastos + 800 € de sueldo); el fondo de **4.000 €** + la reserva de **1.000 €** cubren **2 meses completos**, que es el colchón mínimo razonable para un negocio sin deuda y con stock rotativo."),
-    P("La proyección completa mes a mes está en la sección 10; el resultado, en una línea: **la caja nunca baja de 1.850 €** (agosto) y cierra el año por encima de 7.200 € **con el sueldo pagado los 12 meses**. Con esos números, el colchón es más que suficiente:"),
+    P("El fondo de maniobra **no es un gasto**: es dinero en la cuenta de la tienda para pagar facturas cuando las ventas todavía no cubren los gastos. Con sueldo de 1.500 €/mes desde el mes 1, el desembolso mensual completo es de **3.170 €** (1.670 € de gastos + 1.500 € de sueldo); el fondo de **4.000 €** + la reserva de **1.000 €** cubren **1,6 meses completos**: la protección justa para el arranque, porque desde marzo la tienda genera caja todos los meses."),
+    P("La proyección completa mes a mes está en la sección 10; el resultado, en una línea: **la caja nunca baja de 2.560 €** (febrero, el único mes deficitario) y cierra el año en **42.960 €** **con el sueldo pagado los 12 meses**. Con esos números, el colchón es más que suficiente:"),
     CALLOUT("success", "La cuenta del colchón, en una línea",
-            "Fondo de maniobra 4.000 € + reserva de imprevistos 1.000 € = **5.000 €** frente al mínimo de caja del plan (1.850 €): sobra un margen de **3.150 €** incluso en el peor mes. **¿Y si todo va mal?** Si se vendiera la mitad de lo previsto (~2.000 €/mes), se perderían ~1.070 €/mes y el colchón aguantaría **4–5 meses**. La regla de la sección 8.3 lo gestiona antes: al bajar el sueldo a 400 €/mes, la pérdida cae a ~390 €/mes y el colchón aguanta **más de un año**."),
-    P("**Regla de decisión:** si la caja baja de 3.000 € o las ventas de los últimos 3 meses caen por debajo de 42.300 €/año (3.530 €/mes), se activa el plan B (sección 19) y se aplica la reducción de sueldo de la sección 8.3: menos reposición, más pauta local, promociones de temporada y revisión del alquiler. El fondo de maniobra existe precisamente para que esas decisiones se tomen con calma y no con urgencia."),
+            "Fondo de maniobra 4.000 € + reserva de imprevistos 1.000 € = **5.000 €** frente al mínimo de caja del plan (2.560 €): solo se consumen 1.440 € del colchón en el peor mes. **¿Y si todo va mal?** Incluso vendiendo la mitad de lo previsto (~55.000 €/año) la tienda cubre gastos y sueldo (punto de equilibrio: 54.300 €/año); el colchón solo se tocaría si los 2 primeros meses se quedaran a la mitad (~1.600 €/mes), y en ese caso aguantaría **2,5 meses** hasta que la campaña y la web empiezan a tirar."),
+    P("**Regla de decisión:** si la caja baja de 3.000 € o las ventas de los últimos 3 meses caen por debajo de 54.300 €/año (4.530 €/mes), se activa el plan B (sección 19): más pauta local, promociones de temporada, ajuste del pedido y revisión del alquiler. El fondo de maniobra existe precisamente para que esas decisiones se tomen con calma y no con urgencia."),
 
     S("08.3", "¿CUÁNDO COBRA LA PROPIETARIA?", "El sueldo se paga desde el mes 1 — y sube cuando la tienda lo aguanta",
       "Esta es la pregunta que más importa en la vida real: cuánto cobra la persona que abre y trabaja la tienda. La respuesta es un calendario claro y una regla de seguridad: **el sueldo básico es sagrado desde el mes 1; lo que se gana con margen es la subida.**"),
@@ -158,26 +158,26 @@ SECTION_8 = [
     TABLE(
         ["Año", "Ventas anuales", "Ventas/mes", "Margen bruto", "Gastos fijos", "**Sueldo propietaria**", "**Queda para caja/impuestos**"],
         [
-            ["Año 1", "47.000 €", "3.917 €", "2.742 € (70 %)", "1.670 €", "**800 €**", "~272 €"],
-            ["Año 2", "58.000 €", "4.833 €", "3.432 € (71 %)", "1.790 €", "**1.300 €**", "~342 €"],
-            ["Año 3", "70.000 €", "5.833 €", "4.200 € (72 %)", "1.950 €", "**1.550 €**", "~700 €"],
-            ["Año 4", "82.000 €", "6.833 €", "4.920 € (72 %)", "2.200 €", "**1.800 €**", "~920 €"],
-            ["Año 5", "95.000 €", "7.917 €", "5.780 € (73 %)", "2.450 €", "**2.100 €**", "~1.230 €"],
+            ["Año 1", "110.000 €", "9.167 €", "6.417 € (70 %)", "1.670 €", "**1.500 €**", "~3.247 €"],
+            ["Año 2", "135.000 €", "11.250 €", "7.988 € (71 %)", "1.900 €", "**1.800 €**", "~4.288 €"],
+            ["Año 3", "160.000 €", "13.333 €", "9.600 € (72 %)", "2.300 €", "**2.100 €**", "~5.200 €"],
+            ["Año 4", "180.000 €", "15.000 €", "10.800 € (72 %)", "2.650 €", "**2.400 €**", "~5.750 €"],
+            ["Año 5", "195.000 €", "16.250 €", "11.863 € (73 %)", "3.000 €", "**2.800 €**", "~6.063 €"],
         ],
         widths=[0.10, 0.13, 0.12, 0.15, 0.11, 0.20, 0.19], left_cols=[0, 1, 2, 3, 4, 5, 6], hl=[0],
     ),
-    P("*Cifras de la cuenta de resultados de la sección 11 divididas entre 12 meses, a precios constantes y antes de impuestos. «Queda para caja/impuestos» es lo que se reinvierte o se reserva para el trimestre, **además del sueldo ya pagado**."),
+    P("*Cifras de la cuenta de resultados de la sección 11 divididas entre 12 meses, a precios constantes y antes de impuestos. «Queda para caja/impuestos» es lo que se reinvierte, se reserva para impuestos o se reparte como dividendo — **además del sueldo ya pagado**."),
     CALLOUT("success", "El calendario del sueldo, en claro",
-            "**Año 1: 800 €/mes desde el mes 1** (la familia se completa con los ingresos de las reformas mientras la tienda se asienta). **Año 2: 1.300 €/mes.** **Año 3: 1.550 €/mes.** **Año 4: 1.800 €/mes.** **Año 5: 2.100 €/mes** — un sueldo real, con la tienda facturando 95.000 €/año y dejando **además** ~9.600 € de beneficio neto. Y a partir de ahí, cada subida se hace con la caja, nunca antes."),
-    P("**La regla de seguridad «el local primero» (se aplica a las subidas, no al sueldo base):** el sueldo básico de 800 €/mes es lo primero que se paga cada mes. La subida al siguiente tramo solo se activa si se cumplen las tres condiciones a la vez:"),
+            "**Año 1: 1.500 €/mes desde el mes 1.** **Año 2: 1.800 €/mes.** **Año 3: 2.100 €/mes.** **Año 4: 2.400 €/mes.** **Año 5: 2.800 €/mes** — un sueldo de verdad (33.600 €/año), con una tienda facturando 195.000 €/año y dejando **además** ~47.500 € de beneficio. Y a partir de ahí, cada subida se hace con la caja, nunca antes."),
+    P("**La regla de seguridad «el local primero» (se aplica a las subidas, no al sueldo base):** el sueldo básico de 1.500 €/mes es lo primero que se paga cada mes. La subida al siguiente tramo solo se activa si se cumplen las tres condiciones a la vez:"),
     CHECKBOXES([
-        "**Ventas de los últimos 3 meses ≥ el punto de equilibrio con el sueldo del tramo al que se quiere subir** (año 2: ≥ 4.350 €/mes; año 3: ≥ 4.860 €/mes; año 4: ≥ 5.560 €/mes; año 5: ≥ 6.230 €/mes)",
-        "**Caja ≥ 3.000 € después de pagar el mes** (el colchón de 4.000 € + 1.000 € nunca se toca por debajo de ese nivel)",
+        "**Ventas de los últimos 3 meses ≥ el punto de equilibrio con el sueldo del tramo al que se quiere subir** (año 2: ≥ 5.210 €/mes; año 3: ≥ 6.110 €/mes; año 4: ≥ 7.010 €/mes; año 5: ≥ 7.950 €/mes)",
+        "**Caja ≥ 5.000 € después de pagar el mes** (el colchón de 4.000 € + 1.000 € nunca se toca)",
         "**El pedido del trimestre siguiente ya está pagado o asegurado en caja** (no se sube el sueldo con mercancía en tránsito sin pagar)",
     ]),
-    P("Si una condición falla, **el sueldo base se mantiene** y la subida espera; solo en el escenario grave (ventas bajo 35.200 €/año) se reduce temporalmente a 400 €/mes para no tocar el colchón. **El orden de prioridad es siempre: local → stock → impuestos → sueldo.**"),
+    P("Si una condición falla, **el sueldo base se mantiene** y la subida espera; solo en un caso extremo (ventas bajo 47.200 €/año, la mitad del plan) se reduce temporalmente a 1.000 €/mes para no tocar el colchón. **El orden de prioridad es siempre: local → stock → impuestos → sueldo.**"),
     CALLOUT("warn", "Y si el año 1 va peor de lo previsto",
-            "Si las ventas se quedan en 37.600 € (−20 %), la caja termina el año en ~680 € y el colchón aguanta, pero **la regla salta automáticamente: el sueldo se reduce a 400 €/mes hasta que las ventas vuelvan a 42.300 €/año**. Esa es la diferencia entre un plan que aguanta y uno que se rompe: la tienda y la mercancía están antes que la subida — pero el sueldo base nunca desaparece."),
+            "Si las ventas se quedan en 88.000 € (−20 %), la tienda **sigue pagando el sueldo entero** y cierra con +22.760 € antes de impuestos y ~27.560 € de caja. El plan está diseñado para que ni el caso malo quite el sueldo ni toque el colchón: solo si las ventas cayeran a la mitad (55.000 €/año), que está justo en el punto de equilibrio, se revisaría la retribución **temporalmente**."),
 ]
 
 # ----------------------------------------------------------------------------
@@ -224,7 +224,7 @@ SECTION_15 = [
             ["Continuo (mes a mes)", "Pauta 8–9 €/día en redes sociales segmentada local + contenido de novedades 3 veces/semana", "250 €/mes", "Que la marca aparezca cuando la familia busca ropa infantil o regalo"],
             ["Continuo", "Colaboraciones con perfiles locales (madres influencers de A Coruña/Oleiros), entregas de producto para regalos", "50 €/mes", "Prueba social; el 40 % de la clientela de barrio llega por recomendación"],
             ["Continuo", "Consumibles de marca: bolsas, tarjetas, embalaje de la web", "40 €/mes", "Que el packaging recuerde a KHC y se comparta"],
-            ["Web y e-commerce", "WooCommerce propio: SEO local, catálogo, envíos a toda España, captación de email/WhatsApp", "≈ 10 €/mes", "Facturación adicional sin coste fijo"],
+            ["Web y e-commerce", "WooCommerce propio: SEO local, catálogo, envíos a toda España, captación de email/WhatsApp. Con la pauta + contenido de arriba, **150–200 €/día de facturación online**", "≈ 10 €/mes", "El canal que convierte a KHC en un negocio de 110.000 €/año, no de 30.000 €"],
             ["Retención", "WhatsApp Business + lista de email + programa de puntos + recordatorios de cambio de talla y novedades", "0 €", "Que la clientela vuelva: el 60 % del objetivo son 5–6 clientes/día recurrentes"],
         ],
         widths=[0.18, 0.46, 0.12, 0.24], left_cols=[0, 2],

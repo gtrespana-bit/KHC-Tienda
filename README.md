@@ -26,7 +26,7 @@ Plan de negocio real para abrir **KHC**, tienda de ropa infantil con marca propi
 | Gastos fijos mensuales (marketing incluido) | **1.670 €/mes (≈ 1.700 €)** |
 | Margen bruto medio marca propia China | ~70% |
 | Ventas diarias para no perder dinero | ~92 €/día (2.390 €/mes) |
-| Ventas para sueldo de ~1.000€/mes | ~158 €/día (≈ 4.100 €/mes) |
+| Ventas para sueldo de ~1.500€/mes | ~191 €/día (≈ 4.960 €/mes) |
 | Ventas para sueldo de ~2.000€/mes | ~224 €/día (≈ 5.800 €/mes) |
 | Marketing mensual | 340 €/mes |
 | Coste web | ~10 €/mes (dominio+hosting; desarrollo propio) |
@@ -46,7 +46,7 @@ visuales variados (tarjetas KPI, gráficos, cronogramas, DAFO).
 **El plan incluye el análisis completo (22 secciones y 16 subsecciones):**
 - **Bloque económico-financiero:** proyección de ingresos mes a mes con estacionalidad real,
   cuenta de resultados prevista a 5 años (EBITDA, amortización, impuestos, retribución de la
-  promotora), rentabilidad de la inversión (VAN +13.710 € · TIR 21 % · payback 3,5 años, con el sueldo de la promotora ya pagado),
+  promotora), rentabilidad de la inversión (VAN +230.000 € · TIR > 100 % · payback ≈ 7 meses, con el sueldo de la promotora ya pagado),
   plan de tesorería, estructura de financiación y análisis de sensibilidad con 8 escenarios.
 - **Análisis estratégico:** mercado y demanda del entorno, análisis de competencia, DAFO,
   plan estratégico con objetivos medibles a 12/24/36 meses y cuadro de mando con 10 KPIs.
