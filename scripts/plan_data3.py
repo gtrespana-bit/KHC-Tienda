@@ -10,9 +10,11 @@ from plan_data import (S, P, LEAD, QUOTE, KPIS, TABLE, CALLOUT, GRID, STEPS,
 
 # Cálculo mes a mes (apertura en enero, estacionalidad moda infantil real)
 MESES = ["Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"]
-VENTAS_BASE = [1430, 1730, 2260, 2380, 3400, 2720, 2040, 1700, 4080, 3060, 4080, 4080]
-CAJA_MES = [3331, 2872, 2784, 2780, 3490, 3724, 3482, 3002, 4188, 4660, 5846, 7032]
-MES_GF = 1670
+# Año 1 ampliado a un tamaño real de tienda: 5–6 clientes/día a ~27 € + online desde el mes 3
+VENTAS_BASE = [2050, 2460, 3200, 3390, 4850, 3880, 2910, 2420, 5820, 4360, 5820, 5840]
+CAJA_MES = [2965, 2217, 1987, 1890, 2815, 3061, 2628, 1852, 3456, 4038, 5642, 7260]
+MES_GF = 1670        # gastos fijos de la tienda
+MES_SUELDO = 800     # retribución de la promotora desde el mes 1 (sección 8.3)
 
 def _rows_mensual():
     caja = 4000
@@ -20,7 +22,7 @@ def _rows_mensual():
     for i, v in enumerate(VENTAS_BASE):
         coste = round(v * 0.30)
         margen = v - coste
-        res = margen - MES_GF
+        res = margen - MES_GF - MES_SUELDO
         caja += res
         rows.append([MESES[i], f"{v:,}".replace(",", ".") + " €",
                      f"{coste:,}".replace(",", ".") + " €",
@@ -31,33 +33,33 @@ def _rows_mensual():
 
 SECTION_10 = [
     S("10", "PROYECCIÓN DE INGRESOS", "Mes a mes: el año 1 con estacionalidad real",
-      "Aquí se ve cómo se comporta la tienda a lo largo de un año completo: los meses flojos, los picos de Navidad y vuelta al cole, y cómo evoluciona la caja. Los supuestos son conservadores y se explican para que se puedan discutir o ajustar.",
-      ess=["Año 1 completo mes a mes con estacionalidad real", "Picos: vuelta al cole y Navidad · valles: rebajas y agosto", "Caja mínima 2.780 € (mes 4) y cierre con 7.032 €", "Resultado del año 1: +3.032 € antes de impuestos"]),
+      "Aquí se ve cómo se comporta la tienda a lo largo de un año completo: los meses flojos, los picos de Navidad y vuelta al cole, y cómo evoluciona la caja. Los supuestos se explican para que se puedan discutir o ajustar.",
+      ess=["Año 1 completo mes a mes con estacionalidad real", "Picos: vuelta al cole y Navidad · valles: rebajas y agosto", "Caja mínima 1.850 € (agosto) y cierre con 7.260 €", "Sueldo de 800 €/mes desde el mes 1 y +2.460 € antes de impuestos"]),
 
     P("**Supuestos de la proyección (escenario base año 1):**"),
     CHECKBOXES([
         "**Apertura en enero** y curva de aprendizaje: los 4 primeros meses venden por debajo de la media anual (la tienda aún no se conoce)",
         "**Estacionalidad de la moda infantil en España:** septiembre (vuelta al cole) y noviembre–diciembre (Navidad y Reyes) son los picos; enero–febrero y julio–agosto, rebajas y vacaciones",
         "**Margen bruto medio del 70 %** sobre el coste real puesto en tienda (sección 8)",
-        "**Gastos fijos de 1.670 €/mes** (sección 7) y sin sueldo de la promotora los primeros meses",
-        "**Ticket medio de 25 €** en tienda y 3–4 clientes/día en los meses normales",
+        "**Gastos fijos de 1.670 €/mes** (sección 7) y **sueldo de la promotora de 800 €/mes desde el mes 1** (sección 8.3)",
+        "**Ticket medio de 27 €** en tienda y 5–6 clientes/día en los meses normales",
         "**Tienda online** aporta desde el mes 3–4 un 10–15 % adicional sobre la base",
     ]),
 
     TABLE(
-        ["Mes", "Ventas", "Mercancía (30 %)", "Margen bruto", "Resultado", "Caja acumulada"],
-        _rows_mensual() + [["**TOTAL AÑO 1**", "**32.960 €**", "**9.888 €**", "**23.072 €**", "**+3.032 €**", "**7.032 €**"]],
+        ["Mes", "Ventas", "Mercancía (30 %)", "Margen bruto", "Resultado del mes", "Caja acumulada"],
+        _rows_mensual() + [["**TOTAL AÑO 1**", "**47.000 €**", "**14.100 €**", "**32.900 €**", "**+3.260 €**", "**7.260 €**"]],
         widths=[0.12, 0.18, 0.18, 0.18, 0.17, 0.17], left_cols=[0, 1, 2, 3, 4, 5], hl=[12],
     ),
-    P("*La caja acumulada parte de los 4.000 € de fondo de maniobra. Los meses 1–4 son los más difíciles (mínimo de 2.780 € a finales de abril); a partir de mayo la tienda se financia sola y en septiembre–diciembre genera el grueso del beneficio del año.*"),
+    P("*La caja acumulada parte de los 4.000 € de fondo de maniobra. Los meses 1–4 y julio–agosto son los más difíciles (mínimo de 1.850 € en agosto); de mayo a junio y de septiembre a diciembre la tienda se financia sola y genera el grueso del beneficio del año.*"),
 
     LINE("Evolución de la caja acumulada — año 1 (€, partiendo de 4.000 €)",
          MESES,
          [("Caja acumulada", CAJA_MES)],
          unit="€",
-         note="La caja nunca baja de 2.780 € en el peor mes. El mínimo se toca en el mes 4; después, cada mes de temporada alta devuelve el colchón."),
+         note="La caja nunca baja de 1.850 € en el peor mes (agosto). El colchón de 5.000 € (fondo + reserva) cubre ese momento con 3.100 € de margen; después, cada mes de temporada alta devuelve el colchón."),
 
-    P("**Lectura honesta de la tabla.** La tienda no es rentable en el mes 1 ni en el 2, y el punto de equilibrio mensual (2.390 €/mes) no se supera con regularidad hasta mayo. Sin embargo, en ningún momento la caja baja de 2.780 € gracias al fondo de maniobra, y el año se cierra con +3.032 € antes de impuestos y 7.032 € de caja. **El éxito del año 1 no depende de ganar dinero cada mes, sino de no tocarse la caja y acumular en los picos.**"),
+    P("**Lectura honesta de la tabla.** Con el sueldo de la promotora ya incluido (800 €/mes), el punto de equilibrio sube a **3.530 €/mes**, y no se supera con regularidad hasta mayo: la tienda arranca con 6 meses difíciles, que es lo normal en un comercio nuevo. Aun así la caja nunca baja de 1.850 € gracias al colchón, y el año se cierra con **+3.260 € operativos** (antes de sueldo: +12.860 €), 7.260 € de caja y el sueldo pagado los 12 meses. **La clave del año 1 no es ganar dinero cada mes, sino pagar el sueldo, no tocar la caja y acumular en los picos.**"),
 ]
 
 # ============================================================================
@@ -66,34 +68,34 @@ SECTION_10 = [
 
 SECTION_11 = [
     S("11", "PROYECCIÓN A 5 AÑOS", "Cuenta de resultados prevista y rentabilidad",
-      "La proyección a 5 años responde a las preguntas que hace cualquier convocatoria de ayudas: ¿cuánto se venderá, cuánto se ganará, cuánto se puede retribuir la promotora y cuándo se recupera la inversión?",
-      ess=["Ventas: 33.000 € (año 1) → 70.000 € (año 5)", "Beneficio neto: 1.920 € → 14.770 €", "Retribución promotora: desde el año 2, hasta 12.500 €/año", "VAN +36.920 € · TIR 42 % · payback 2,6 años"]),
+      "La proyección a 5 años responde a las preguntas que hace cualquier convocatoria de ayudas: ¿cuánto se venderá, cuánto ganará la tienda, cuánto cobrará la promotora y cuándo se recupera la inversión? Aquí la retribución de la promotora **es un coste del negocio desde el año 1** — no un residuo.",
+      ess=["Ventas: 47.000 € (año 1) → 95.000 € (año 5)", "Sueldo promotora: 800 €/mes año 1 → 2.100 €/mes año 5", "Beneficio neto: 2.090 € → 9.630 € (además del sueldo)", "VAN +13.710 € · TIR 21 % · payback 3,5 años (con sueldo pagado)"]),
 
     P("**Escenario base quinquenal (ventas físicas + online con crecimiento por fidelización y rotación):**"),
     TABLE(
         ["Concepto", "Año 1", "Año 2", "Año 3", "Año 4", "Año 5"],
         [
-            ["Ventas (a € constantes)", "33.000 €", "45.000 €", "55.000 €", "62.000 €", "70.000 €"],
-            ["Margen bruto aplicado", "70 %", "70 %", "71 %", "72 %", "72 %"],
-            ["Margen bruto (€)", "23.100 €", "31.500 €", "39.050 €", "44.640 €", "50.400 €"],
-            ["Gastos fijos y de estructura", "20.040 €", "21.000 €", "24.000 €", "26.000 €", "28.500 €"],
-            ["EBITDA", "3.060 €", "10.500 €", "15.050 €", "18.640 €", "21.900 €"],
+            ["Ventas (a € constantes)", "47.000 €", "58.000 €", "70.000 €", "82.000 €", "95.000 €"],
+            ["Margen bruto aplicado", "70 %", "71 %", "72 %", "72 %", "73 %"],
+            ["Margen bruto (€)", "32.900 €", "41.180 €", "50.400 €", "59.040 €", "69.350 €"],
+            ["Gastos fijos y de estructura", "20.040 €", "21.480 €", "23.400 €", "26.400 €", "29.400 €"],
+            ["EBITDA", "12.860 €", "19.700 €", "27.000 €", "32.640 €", "39.950 €"],
+            ["**Retribución promotora**", "**9.600 €**", "**15.600 €**", "**18.600 €**", "**21.600 €**", "**25.200 €**"],
+            ["— equivalente mensual", "800 €", "1.300 €", "1.550 €", "1.800 €", "2.100 €"],
             ["Amortización (activos fijos)", "800 €", "800 €", "800 €", "800 €", "800 €"],
-            ["Resultado antes de impuestos", "2.260 €", "9.700 €", "14.250 €", "17.840 €", "21.100 €"],
-            ["IRPF estimado (autónoma)", "340 €", "1.840 €", "3.490 €", "4.820 €", "6.330 €"],
-            ["**Resultado neto**", "1.920 €", "7.860 €", "10.760 €", "13.020 €", "14.770 €"],
-            ["Retribución promotora (máximo recomendado)", "0 €", "6.000 €", "9.000 €", "11.000 €", "12.500 €"],
-            ["— equivalente mensual", "0 €", "500 €", "750 €", "917 €", "1.042 €"],
-            ["Beneficio retenido / reinvertido", "1.920 €", "1.860 €", "1.760 €", "2.020 €", "2.270 €"],
+            ["Resultado antes de impuestos", "2.460 €", "3.300 €", "7.600 €", "10.240 €", "13.950 €"],
+            ["IRPF estimado (autónoma)", "370 €", "790 €", "1.980 €", "2.970 €", "4.320 €"],
+            ["**Resultado neto (además del sueldo)**", "**2.090 €**", "**2.510 €**", "**5.620 €**", "**7.270 €**", "**9.630 €**"],
+            ["Beneficio retenido / reinvertido", "2.090 €", "2.510 €", "5.620 €", "7.270 €", "9.630 €"],
         ],
-        widths=[0.30, 0.14, 0.14, 0.14, 0.14, 0.14], left_cols=[0, 1, 2, 3, 4, 5], hl=[8],
+        widths=[0.30, 0.14, 0.14, 0.14, 0.14, 0.14], left_cols=[0, 1, 2, 3, 4, 5], hl=[5, 10],
     ),
     CALLOUT("info", "Supuestos de la cuenta de resultados (para que sea auditable)",
-            "**Ventas:** año 1 = 32.960 € (proyección mensual de la sección 10); crecimiento del 36 % en el año 2 por fidelización, online y calzado; después 22 %, 13 % y 13 %. **Margen:** 70 % estable, sube a 71–72 % cuando el mix se enriquece con regalo y online. **Gastos de estructura:** año 1 = 1.670 €/mes; año 2 suben por el fin de la tarifa plana (cuota autónoma ~300 €/mes) y más marketing; año 3 se incorpora una ayudante a media jornada; años 4–5 crecen por marketing y segunda tienda en estudio. **Amortización:** 800 €/año de los activos fijos (~3.920 € a 5 años: reformas, mobiliario, equipamiento, imagen); el stock no se amortiza porque rota. **No se incluyen** intereses (no se prevé deuda relevante) ni IVA (se liquida aparte)."),
+            "**Ventas:** año 1 = 47.000 € (proyección mensual de la sección 10, ~150 €/día con 5–6 clientes/día y canal online); crecimiento del 23 % en el año 2 por fidelización, online y calzado; después 21 %, 17 % y 16 %. **Margen:** 70 % en el año 1 y sube a 71–73 % cuando el mix se enriquece con regalo y online. **Gastos de estructura (sin sueldo):** año 1 = 1.670 €/mes; año 2 sube a 1.790 €/mes por el fin de la tarifa plana (cuota ~300 €/mes) y más marketing; año 3, 1.950 €/mes (refuerzo en temporadas); año 4, 2.200 €/mes (ayudante a media jornada, se contrata **cuando el sueldo de la promotora ya está asegurado**); año 5, 2.450 €/mes. **Retribución promotora:** coste desde el año 1, con la escalera de la sección 8.3. **Amortización:** 800 €/año de los activos fijos (~3.920 € a 5 años); el stock no se amortiza porque rota. **No se incluyen** intereses (no se prevé deuda relevante) ni IVA (se liquida aparte)."),
     CALLOUT("success", "La conclusión, en tres líneas",
-            "**El proyecto se paga solo** (recuperación en 2,6 años, sección 11.1). **La propietaria empieza a cobrar en el año 2**, de forma gradual y con regla de seguridad (sección 8.3): 500 €/mes, subiendo hasta ~1.000 €/mes en el año 5. **El local va primero**: solo se retira sueldo cuando la caja lo aguanta sin tocar el colchón."),
-    CALLOUT("warn", "Qué pasa si el año 1 no cumple (el escenario más probable)",
-            "Si el año 1 cierra con ventas de **26.400 €** (−20 %), el resultado antes de impuestos es de **−1.580 €** y el fondo de maniobra termina el año en ~2.400 €. La tienda sigue siendo viable: no hay deuda, no hay sueldo comprometido, el stock es rotativo y se puede ajustar el pedido del año 2 con datos reales. Este plan está diseñado para sobrevivir a un año 1 mediocre, no para triunfar solo en el papel."),
+            "**La propietaria cobra desde el mes 1**: 800 €/mes, con una escalera que llega a **2.100 €/mes en el año 5** (sección 8.3). **Además del sueldo, el negocio deja beneficio**: 2.090 € en el año 1 y 9.630 € en el año 5, que se reinvierten. **El local va primero**: las subidas de sueldo solo se activan cuando la caja lo aguanta sin tocar el colchón."),
+    CALLOUT("warn", "Qué pasa si el año 1 no cumple (el escenario de riesgo)",
+            "Si el año 1 cierra con ventas de **37.600 €** (−20 %), la tienda todavía paga la mitad del sueldo y el colchón termina el año en ~680 €. No es un escenario cómodo, pero **la regla de la sección 8.3 lo gestiona antes de llegar ahí**: el sueldo se reduce a 400 €/mes temporalmente, el pedido del año 2 se ajusta con datos reales y no hay deuda que ahogue. Este plan está diseñado para sobrevivir a un año 1 mediocre, no para triunfar solo en el papel."),
 
     S("11.1", "RENTABILIDAD DE LA INVERSIÓN", "VAN, TIR y plazo de recuperación"),
     P("**Análisis de la inversión como proyecto (los 4 indicadores que piden los análisis financieros):**"),
@@ -101,15 +103,15 @@ SECTION_11 = [
         ["Indicador", "Valor", "Interpretación"],
         [
             ["Inversión inicial", "21.010 €", "Todo el desembolso para abrir (sección 6)"],
-            ["Flujos de caja de la operación (EBITDA)", "3.060 € · 10.500 € · 15.050 € · 18.640 € · 21.900 €", "Caja generada por la tienda en los años 1–5, antes de impuestos y sin considerar la retribución de la promotora"],
-            ["VAN al 5 %", "**+36.920 €**", "El proyecto crea 36.920 € de valor sobre el coste del dinero (5 %): es claramente rentable"],
-            ["TIR", "**42,0 %**", "Rentabilidad anual del proyecto: muy por encima de cualquier alternativa de ahorro o deuda"],
-            ["Plazo de recuperación (payback)", "**2,6 años**", "La inversión se recupera a mediados del año 3 con los flujos acumulados"],
-            ["Payback descontado (al 5 %)", "≈ 3,1 años", "Considerando el coste del dinero, la recuperación se produce durante el año 3"],
+            ["Flujos de caja de la operación", "3.260 € · 4.100 € · 8.400 € · 11.040 € · 14.750 €", "Caja que deja la tienda en los años 1–5 **después de pagar el sueldo de la promotora** y antes de impuestos"],
+            ["VAN al 5 %", "**+13.710 €**", "El proyecto crea 13.710 € de valor sobre el coste del dinero (5 %) con el sueldo ya pagado: es rentable de verdad"],
+            ["TIR", "**21,1 %**", "Rentabilidad anual del proyecto con el sueldo incluido: muy por encima de cualquier alternativa de ahorro o deuda"],
+            ["Plazo de recuperación (payback)", "**3,5 años**", "La inversión se recupera a mitad del año 4 con los flujos acumulados"],
+            ["Payback descontado (al 5 %)", "≈ 3,8 años", "Considerando el coste del dinero, la recuperación se produce casi al final del año 4"],
         ],
         widths=[0.28, 0.34, 0.38], left_cols=[0, 1], hl=[2, 3],
     ),
-    P("**Lectura honesta.** El VAN y la TIR son tan altos porque el modelo no paga nóminas los primeros años y porque la inversión es contenida (reformas y web a coste propio, stock rotativo). Es exactamente lo que un inversor o una convocatoria quieren ver: **una inversión moderada con flujos crecientes y recuperación en menos de 3 años**, y al mismo tiempo el plan reconoce que el año 1 puede cerrar en números rojos si las ventas no acompañan (escenario de la sección 13)."),
+    P("**Lectura honesta.** A diferencia de los análisis que maquillan resultados, estos flujos **ya descuentan el sueldo de la promotora**: no se valora un negocio que no paga a quien lo trabaja. Aun así, el proyecto sigue siendo claramente rentable (TIR del 21 %), porque la inversión es contenida (reformas y web a coste propio, stock rotativo) y los flujos crecen al doble entre el año 1 y el 5. El escenario del año 1 en números rojos si las ventas no acompañan está analizado en la sección 13."),
     CALLOUT("tip", "Cómo se trata esta inversión en la solicitud de ayudas",
             "La inversión subvencionable habitual en comercio minorista incluye: reforma y adecuación del local (materiales y obra), mobiliario y equipamiento, marca e imagen (rótulo, etiquetas, packaging), digitalización (web, TPV, cámaras) y stock inicial en algunos programas. Las ayudas suelen cubrir el **30–50 %** del gasto elegible: es la palanca que convierte los 21.010 € en una inversión neta de ~15.000 €. Se detalla en la sección 17."),
 ]
@@ -136,7 +138,7 @@ SECTION_12 = [
     ),
     P("**Cómo se gasta:** local y reforma entre los meses −4 y −2, marca/mobiliario/legal en el −3 al 0, stock a la llegada (mes 0) y 5.000 € (reserva + fondo de maniobra) siempre disponibles en cuenta."),
     CALLOUT("success", "Colchón de liquidez tras la apertura",
-            "La caja inicial es de 4.000 € (fondo de maniobra) + 1.000 € (reserva de imprevistos). La sección 10 muestra que el mes más bajo de caja es ~2.780 €, es decir, **1,7 veces los gastos fijos mensuales** en el peor momento. Con el colchón completo (5.000 €), el margen sube a 3 meses de gastos. Es un colchón razonable para un negocio sin deuda y con stock rotativo: el riesgo real de quedarse sin caja es bajo."),
+            "La caja inicial es de 4.000 € (fondo de maniobra) + 1.000 € (reserva de imprevistos). La sección 10 muestra que el mes más bajo de caja es ~1.850 € (agosto), y el colchón completo (5.000 €) cubre **2 meses de gastos** (2.470 €/mes con sueldo) en el peor momento. Es un colchón razonable para un negocio sin deuda y con stock rotativo: el riesgo real de quedarse sin caja es bajo."),
 
     P("**Seguimiento de tesorería (qué se revisa cada mes):**"),
     CHECKBOXES([
@@ -156,26 +158,26 @@ SECTION_12 = [
 SECTION_13 = [
     S("13", "SENSIBILIDAD Y ESCENARIOS", "Qué pasa si las cosas van distintas a lo previsto",
       "El plan base es una hipótesis; el valor del plan está en saber qué ocurre si esa hipótesis falla. Este análisis somete la cuenta de resultados del año 1 a variaciones realistas y define cuándo se activa cada plan de contingencia.",
-      ess=["Resiste −20 % de ventas: la caja queda en ~2.440 €", "Margen < 65 % es el límite: renegociar costes", "Umbral de caja: 22.900 €/año (no se toca el fondo)", "Ticket medio: la variable más controlable"]),
+      ess=["Resiste −20 % de ventas: la caja queda en ~680 € (sueldo a 400 €/mes)", "Margen < 65 % es el límite: renegociar costes", "Umbral del colchón: 35.200 €/año con sueldo (no se toca)", "Ticket medio: la variable más controlable"]),
 
-    P("**Sensibilidad del resultado del año 1 (sobre 32.960 € de ventas y 1.670 €/mes de gastos): una sola tabla, sin repetir números.**"),
+    P("**Sensibilidad del año 1 (sobre 47.000 € de ventas, 1.670 €/mes de gastos y 800 €/mes de sueldo): una sola tabla, sin repetir números.**"),
     TABLE(
         ["Variable", "Variación", "Ventas año 1", "Resultado antes de impuestos", "Caja a cierre", "Prob.", "Veredicto"],
         [
-            ["Escenario base", "—", "32.960 €", "+2.260 €", "7.032 €", "45 %", "Viable con holgura"],
-            ["Ventas", "−20 %", "26.400 €", "−1.580 €", "~2.440 €", "40 %", "Aguanta; aplicar plan B (sección 19)"],
-            ["Ventas", "+20 % (online despega)", "39.550 €", "+6.900 €", "~11.645 €", "15 %", "Acelerar pedidos y marketing"],
-            ["Margen bruto", "70 % → 65 %", "32.960 €", "+1.410 €", "~5.384 €", "—", "Positivo, pero revisar costes"],
-            ["Margen bruto", "70 % → 60 %", "32.960 €", "−240 €", "~3.736 €", "—", "En el límite; renegociar proveedor"],
-            ["Gastos fijos", "+10 % (1.840 €/mes)", "32.960 €", "+930 €", "~5.028 €", "—", "Positivo, margen apretado"],
-            ["Ticket medio", "25 € → 20 €", "26.400 €", "−1.580 €", "~2.440 €", "—", "La variable más controlable: mix de regalo y complementos"],
-            ["Apertura", "2 meses de retraso", "29.000 €", "+470 €", "~7.600 €", "—", "Recuperable; ajustar pedido"],
+            ["Escenario base", "—", "47.000 €", "+2.460 €", "7.260 €", "45 %", "Viable: paga el sueldo y deja beneficio"],
+            ["Ventas", "−20 %", "37.600 €", "−4.120 €", "~680 €", "40 %", "Aguanta sin vaciar el colchón; sueldo a 400 €/mes (regla 8.3)"],
+            ["Ventas", "+20 % (online despega)", "56.400 €", "+9.040 €", "~13.840 €", "15 %", "Acelerar pedidos y marketing"],
+            ["Margen bruto", "70 % → 65 %", "47.000 €", "+110 €", "~4.910 €", "—", "Aviso: renegociar costes o ajustar PVP"],
+            ["Margen bruto", "70 % → 60 %", "47.000 €", "−2.240 €", "~2.560 €", "—", "En el límite: renegociar proveedor"],
+            ["Gastos fijos", "+10 % (1.840 €/mes)", "47.000 €", "+456 €", "~5.256 €", "—", "Positivo, margen apretado"],
+            ["Ticket medio", "27 € → 24 € (−11 %)", "41.800 €", "−1.160 €", "~3.640 €", "—", "La variable más controlable: mix de regalo y complementos"],
+            ["Apertura", "2 meses de retraso (−10 %)", "42.300 €", "−830 €", "~3.970 €", "—", "Recuperable; ajustar pedido"],
         ],
         widths=[0.15, 0.15, 0.13, 0.16, 0.12, 0.07, 0.22], left_cols=[0, 1, 2, 3, 4, 5], hl=[0],
     ),
-    CALLOUT("warn", "El dato que decide de todo: el punto de equilibrio de caja",
-            "La tienda **no pierde el colchón** mientras las ventas anuales no bajen de **22.900 €** (≈ 1.900 €/mes ≈ 73 €/día): ese es el nivel en que la pérdida acumulada iguala el fondo de maniobra de 4.000 €. Por debajo de esa cifra hay que tomar decisiones (renegociar alquiler, recortar marketing, buscar otro formato). El escenario pesimista de este plan (−20 %) queda por encima de ese umbral."),
-    P("**Conclusión del análisis.** El resultado es robusto en un rango de ±20 % de ventas: el escenario base cubre gastos y deja caja; el pesimista consume parte del fondo pero no rompe el negocio; el optimista permite acelerar. La variable más delicada es el **margen bruto** (si bajara del 65 % hay que renegociar costes) Y hay una equivalencia útil: **bajar el ticket medio de 25 € a 20 € equivale a vender un 20 % menos** — por eso el mix de regalo y complementos (que sube el ticket sin gastar más en publicidad) es la palanca más barata de todas."),
+    CALLOUT("warn", "El dato que decide de todo: el punto de equilibrio con sueldo",
+            "Con el sueldo de 800 €/mes ya incluido, la tienda **no toca el colchón de 5.000 €** mientras las ventas no bajen de **35.200 €/año** (≈ 2.930 €/mes ≈ 98 €/día): ese es el nivel en que la pérdida acumulada iguala el colchón. Por debajo, la regla de la sección 8.3 reduce el sueldo antes de tocar la caja. Y para que la tienda **pague el sueldo entero y se mantenga sola** hacen falta 42.300 €/año (≈ 3.530 €/mes ≈ 118 €/día), que es lo que el plan prevé superar con regularidad a partir de mayo del año 1."),
+    P("**Conclusión del análisis.** El resultado es robusto en un rango de ±20 % de ventas: el escenario base paga el sueldo y deja beneficio; el pesimista obliga a reducir el sueldo a la mitad (la regla de la sección 8.3 lo hace automáticamente) pero no rompe el negocio; el optimista permite acelerar pedidos y contratar ayuda antes. La variable más delicada es el **margen bruto** (si bajara del 65 % hay que renegociar costes) y el ticket medio: **bajar el ticket de 27 € a 24 € equivale a vender un 11 % menos**, por eso el mix de regalo y complementos, que sube el ticket sin gastar más en publicidad, es la palanca más barata de todas."),
 ]
 
 # ============================================================================
@@ -203,7 +205,7 @@ SECTION_14 = [
             "**Dependencia de un único proveedor** en China al principio",
             "**Experiencia limitada en retail** (primera tienda): curva de aprendizaje en compras y surtido",
             "**Cash flow estacional**: 4–5 meses al año generan la mayor parte del beneficio",
-            "**Sin sueldo el año 1**: el modelo depende de los ingresos externos de la promotora",
+            "**Sueldo inicial ajustado (800 €/mes)**: la familia se completa con los ingresos externos de la promotora mientras la tienda crece",
         ],
     ),
     TWOCOL(
@@ -229,12 +231,12 @@ SECTION_14 = [
 
     S("14.1", "OBJETIVOS MEDIBLES", "Hacia dónde va KHC, con plazos y métricas"),
     TIMELINE([
-        ("Mes 0", "Abrir y aprender", "Apertura con stock completo, campaña de apertura y medición desde el día 1. Objetivo: 3–4 clientes/día y caja que no baje de 2.500 €."),
-        ("Mes 3", "Primera revisión real", "Análisis de rotación por modelo: se elimina lo que no vende, se refuerza lo que sí. Primer pedido de reposición con datos. Objetivo: ticket medio ≥ 25 €."),
-        ("Mes 6", "Estabilizar y añadir", "Canal online funcionando, primeras colaboraciones locales, valoración del calzado. Objetivo: ventas ≥ 2.700 €/mes y 30 % de clientes recurrentes."),
-        ("Mes 12", "Cerrar un año con datos", "Facturación 30.000–36.000 €, caja > 6.000 €, surtido depurado (los 10 mejores modelos = 50 % ventas). Decidir calzado y segunda tienda."),
-        ("Mes 24", "Consolidar y cobrar", "Facturación 45.000 €, retribución de 6.000 €/año para la promotora (primera subida real, con la regla de la sección 8.3), online al 20 % de ventas. Evaluar SL."),
-        ("Mes 36", "Crecer o escalar", "Facturación 55.000 €, retribución 9.000 €/año, posible segunda ubicación o personal auxiliar. Decisión SL con datos."),
+        ("Mes 0", "Abrir y aprender", "Apertura con stock completo, campaña de apertura y medición desde el día 1. Objetivo: 5–6 clientes/día y caja que no baje de 1.850 €. Sueldo de 800 €/mes desde el mes 1."),
+        ("Mes 3", "Primera revisión real", "Análisis de rotación por modelo: se elimina lo que no vende, se refuerza lo que sí. Primer pedido de reposición con datos. Objetivo: ticket medio ≥ 27 €."),
+        ("Mes 6", "Estabilizar y añadir", "Canal online funcionando, primeras colaboraciones locales, valoración del calzado. Objetivo: ventas ≥ 3.400 €/mes y 30 % de clientes recurrentes."),
+        ("Mes 12", "Cerrar un año con datos", "Facturación 44.000–50.000 €, caja > 7.000 €, sueldo pagado los 12 meses, surtido depurado (los 10 mejores modelos = 50 % ventas). Decidir calzado."),
+        ("Mes 24", "Consolidar y cobrar", "Facturación 58.000 €, sueldo de 1.300 €/mes para la promotora (primera subida real, con la regla de la sección 8.3), online al 20 % de ventas. Evaluar SL."),
+        ("Mes 36", "Crecer o escalar", "Facturación 70.000 €, sueldo de 1.550 €/mes, refuerzo en temporadas. Decisión SL con datos y evaluación de ayudante a media jornada."),
     ]),
 ]
 
@@ -250,15 +252,15 @@ SECTION_20 = [
     TABLE(
         ["Indicador", "Fórmula", "Objetivo año 1", "Frecuencia", "Si falla…"],
         [
-            ["Ventas/día", "Facturación ÷ días abiertos", "≥ 92 €/día (equilibrio); 126 €/día (objetivo)", "Semanal", "Menos de 60 €/día durante 3 semanas → activar plan B"],
-            ["Ticket medio", "Ventas ÷ nº tickets", "≥ 25 €", "Semanal", "Bajo 20 € → mejorar mix de regalo y complementos"],
-            ["Clientes/día", "Tickets emitidos ÷ días", "3–4 clientes", "Semanal", "Bajo 2 → revisar tráfico, escaparate y pauta"],
+            ["Ventas/día", "Facturación ÷ días abiertos", "≥ 92 €/día (equilibrio tienda); ≥ 150 €/día (objetivo año 1)", "Semanal", "Menos de 98 €/día durante 3 semanas → activar plan B (sección 19)"],
+            ["Ticket medio", "Ventas ÷ nº tickets", "≥ 27 €", "Semanal", "Bajo 24 € → mejorar mix de regalo y complementos"],
+            ["Clientes/día", "Tickets emitidos ÷ días", "5–6 clientes", "Semanal", "Bajo 4 → revisar tráfico, escaparate y pauta"],
             ["Conversión", "Clientes ÷ visitantes que entran", "25–35 %", "Quincenal", "Baja → revisar escaparate y precio percibido"],
             ["Margen bruto", "(Ventas − coste mercancía) ÷ Ventas", "≥ 70 % (media)", "Mensual", "Bajo 65 % → renegociar costes o subir PVP"],
             ["Rotación de stock", "Coste vendido ÷ stock medio (anual)", "≥ 4 veces/año", "Mensual", "Baja → liquidar en rebajas y recortar reposición"],
             ["Gastos fijos", "Suma de todos los fijos", "≤ 1.700 €/mes", "Mensual", "Suben > 5 % → revisar partidas"],
-            ["Caja", "Saldo real de la cuenta del negocio", "≥ 4.000 € (colchón)", "Semanal", "Bajo 3.000 € → congelar reposición no urgente"],
-            ["Margen de seguridad", "(Ventas − punto equilibrio) ÷ Ventas", "≥ 13 % año 1; ≥ 33 % año 2", "Mensual", "Negativo → riesgo real de pérdidas"],
+            ["Caja", "Saldo real de la cuenta del negocio", "≥ 4.000 € (colchón: fondo + reserva)", "Semanal", "Bajo 3.000 € → congelar reposición no urgente; revisar sueldo (sección 8.3)"],
+            ["Margen de seguridad", "(Ventas − punto equilibrio con sueldo) ÷ Ventas", "≥ 4 % año 1; ≥ 10 % año 2; ≥ 15 % año 4", "Mensual", "Negativo → riesgo de no poder pagar el sueldo"],
             ["Coste de adquisición", "Marketing ÷ ventas atribuidas (últimos 60 días)", "≤ 10 % de las ventas", "Mensual", "Alto → ajustar audiencia y mensaje"],
         ],
         widths=[0.22, 0.28, 0.20, 0.10, 0.20], left_cols=[0, 1],

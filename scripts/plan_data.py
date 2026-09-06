@@ -10,7 +10,7 @@ META = {
     "document": "Plan de Negocio",
     "subtitle": "Tienda de moda infantil 0–12 años · Marca propia",
     "location": "Oleiros · A Coruña · Galicia",
-    "edition": "Edición Septiembre 2026 · v1.7.1",
+    "edition": "Edición Septiembre 2026 · v1.8",
     "confidential": "Documento de trabajo — cifras orientativas, en revisión continua",
 }
 
@@ -140,9 +140,9 @@ SECTION_1 = [
       "KHC es una tienda de ropa infantil (0–12 años) con marca propia en un barrio residencial de Oleiros (A Coruña): fabricación directa en China con la etiqueta KHC, tienda física, online propia y marketing local desde el primer día.",
       ess=["Inversión: 21.010 € con todo incluido para abrir",
            "Margen ~70 % por marca propia → equilibrio a 92 €/día",
-           "Año 1: 32.960 € de ventas y caja que no baja de 2.700 €",
-           "La propietaria cobra desde el año 2: 0 € el año 1 → 500 €/mes (regla: el local primero)",
-           "VAN +36.920 € · TIR 42 % · recuperación en 2,6 años"]),
+           "Año 1: 47.000 € de ventas y caja que no baja de 1.850 €",
+           "La propietaria cobra desde el mes 1: 800 €/mes → 1.300 → 1.550 → 1.800 → 2.100 €/mes (año 5)",
+           "VAN +13.710 € · TIR 21 % · recuperación en 3,5 años (sueldo ya pagado)"]),
     LEAD("**La idea en una frase:** ropa infantil de calidad media-alta con marca propia, vendida en una tienda cercana donde los padres vuelven cada mes a ver novedades."),
 
     KPIS([
@@ -183,7 +183,7 @@ SECTION_2 = [
         ("🧵", "Producto — Ropa 0–12 años",
          "Bodies, conjuntos bebé, pijamas, camisetas, sudaderas, pantalones, vestidos y abrigos de calidad media-alta (algodón peinado 180–220 g/m², costuras dobles, planchado de etiquetas KHC)."),
         ("🎁", "Motores de ticket — Bebé y regalo",
-         "Sets regalo recién nacido, muselinas, baberos, mantas, chupeteros, peluches y juguete sensorial de madera. Suben el ticket medio de 25 € a 40–60 € y son el motivo de compra por impulso junto a caja."),
+         "Sets regalo recién nacido, muselinas, baberos, mantas, chupeteros, peluches y juguete sensorial de madera. Suben el ticket medio de 27 € a 40–60 € y son el motivo de compra por impulso junto a caja."),
         ("📍", "Canal 1 — Tienda física de barrio",
          "Local de 40–50 m² en zona residencial de Oleiros, cerca de colegios y parques. El negocio de proximidad: la gente ve, toca, prueba y regala."),
         ("🌐", "Canal 2 — Tienda online propia",
@@ -250,16 +250,16 @@ SECTION_2 = [
     TABLE(
         ["Periodo", "Empleo ETC", "Detalle"],
         [
-            ["Año 1", "1,0", "Promotora a jornada completa (autónoma). Sin nóminas: los ingresos externos cubren lo personal"],
-            ["Año 2", "1,0", "Promotora a jornada completa; se valora una ayuda a media jornada en Navidad"],
-            ["Año 3", "1,5", "Promotora + ayuda a media jornada contratada (coste ~1.000 €/mes en picos)"],
-            ["Año 4", "1,75", "Promotora en dirección + empleada a media jornada estable"],
-            ["Año 5", "2,0", "Promotora en dirección + 1 empleada a jornada completa; posible segunda tienda"],
+            ["Año 1", "1,0", "Promotora a jornada completa con retribución de 800 €/mes desde el mes 1; los ingresos externos completan lo personal"],
+            ["Año 2", "1,0", "Promotora a jornada completa con 1.300 €/mes; refuerzo puntual en Navidad"],
+            ["Año 3", "1,2", "Promotora + refuerzo en temporadas altas (coste ~300 €/mes de media)"],
+            ["Año 4", "1,5", "Promotora + ayudante a media jornada estable (se contrata cuando el sueldo de la promotora ya está asegurado)"],
+            ["Año 5", "1,6", "Promotora + ayudante a media jornada + refuerzo en Navidad"],
         ],
         widths=[0.14, 0.16, 0.70], left_cols=[0],
     ),
-    CALLOUT("info", "Por qué el modelo es casi «sin nómina» al principio",
-            "La estructura deliberadamente evita costes fijos de personal durante los primeros 18 meses: la promotora trabaja como autónoma (su retribución sale del beneficio, no de una nómina) y los ingresos de la empresa de reformas cubren lo personal. Eso permite que la inversión inicial baje a 21.010 € y que el punto de equilibrio sea de 92 €/día en lugar de 145 €/día. El empleo se crea cuando la caja lo sostiene: año 3."),
+    CALLOUT("info", "El orden del empleo: primero el sueldo de la promotora, después el equipo",
+            "La estructura evita costes fijos de personal mientras el negocio se asienta: la promotora se retribuye desde el mes 1 (800 €/mes) y el primer empleado contratado llega **cuando su sueldo ya está asegurado** (año 3, para temporadas; año 4, como ayudante estable). Así la inversión inicial baja a 21.010 € y el punto de equilibrio de la tienda es de 92 €/día. El empleo se crea cuando la caja lo sostiene, no antes."),
 
     S("02.3", "SOSTENIBILIDAD, IGUALDAD E INNOVACIÓN", "Los tres ejes que valoran las convocatorias",
       "Las ayudas al comercio (IGAPE, Consellería, fondos Next Generation) puntúan explícitamente estos tres ejes. Este proyecto los cumple de forma natural, no forzada."),
@@ -280,7 +280,7 @@ SECTION_2 = [
 SECTION_3 = [
     S("03", "MERCADO Y CLIENTE", "Quién compra, cuánto gasta y cuándo",
       "Una tienda de barrio no necesita captar al 1 % de un mercado enorme: necesita que el 5 % de las familias de su entorno la conozcan y repitan. Estas son las claves del comportamiento de compra.",
-      ess=["~8.000 niños de 0–12 años en el entorno ≈ 1,6 M€/año de gasto", "Solo hace falta captar el 2–3 %: 3–4 clientes al día", "Cadenas y online no dan lo que da una tienda de barrio", "Diferenciación: tacto, asesoramiento, regalo y packaging KHC"]),
+      ess=["~8.000 niños de 0–12 años en el entorno ≈ 1,6 M€/año de gasto", "Solo hace falta captar el 2–3 %: 5–6 clientes al día", "Cadenas y online no dan lo que da una tienda de barrio", "Diferenciación: tacto, asesoramiento, regalo y packaging KHC"]),
 
     P("**El cliente tipo de KHC** es una madre (o padre) de 28–45 años, de nivel medio-alto, que vive a menos de 10 minutos de la tienda y que compra para: (1) necesidades básicas del bebé, (2) regalo de nacimiento, bautizo o cumpleaños, y (3) caprichos de calidad para sus hijos. Valora el **tacto y la cercanía** por encima del precio: sabe lo que es el algodón peinado, busca algo bonito que no haya en el supermercado y paga 12–15 € por un body de calidad si lo puede tocar y se lo aconsejan."),
 
@@ -297,7 +297,7 @@ SECTION_3 = [
         widths=[0.24, 0.24, 0.16, 0.36], left_cols=[0],
     ),
 
-    P("**Tamaño del mercado y demanda potencial (método bottom-up del «barrio»).** El mercado objetivo se estima a partir del entorno real, no de cifras macro: en el entorno de Oleiros (Santa Cruz, Perillo, Bastiagueiro, Dorneda) viven, de forma conservadora, **más de 8.000 niños de 0–12 años** (una población de ~40.000 habitantes en el entorno con una estructura de edad joven, superior a la media gallega). Con un gasto medio de ~200 €/año por niño en ropa, el gasto anual en ropa infantil del entorno ronda los **1,6 millones de €**. KHC solo necesita captar el **2–3 %** de ese gasto (32.000–48.000 €/año) para alcanzar el objetivo del primer año. Es un objetivo alcanzable con 3–4 clientes al día."),
+    P("**Tamaño del mercado y demanda potencial (método bottom-up del «barrio»).** El mercado objetivo se estima a partir del entorno real, no de cifras macro: en el entorno de Oleiros (Santa Cruz, Perillo, Bastiagueiro, Dorneda) viven, de forma conservadora, **más de 8.000 niños de 0–12 años** (una población de ~40.000 habitantes en el entorno con una estructura de edad joven, superior a la media gallega). Con un gasto medio de ~200 €/año por niño en ropa, el gasto anual en ropa infantil del entorno ronda los **1,6 millones de €**. KHC solo necesita captar el **3 %** de ese gasto (≈ 47.000 €/año) para alcanzar el objetivo del primer año: **5–6 clientes al día de 27 € de ticket**, una parte mínima del gasto que ya existe."),
     TABLE(
         ["Parámetro de demanda", "Valor conservador", "Fuente / hipótesis"],
         [
@@ -305,13 +305,13 @@ SECTION_3 = [
             ["Niños de 0–12 años estimados", "≈ 8.000 (20 %)", "Estructura de edad joven del área, superior a la media gallega"],
             ["Gasto medio anual en ropa infantil por niño", "≈ 200 €", "Gasto medio en moda infantil España; rango 150–250 € según nivel adquisitivo"],
             ["Gasto total en ropa infantil del entorno", "≈ 1,6 M€/año", "8.000 niños × 200 €"],
-            ["Cuota necesaria para el objetivo del año 1 (32.000–36.000 €)", "2,0–2,3 %", "Facturación objetivo ÷ gasto total del entorno"],
-            ["Clientes necesarios para ese objetivo", "≈ 104 compras/mes", "3–4 clientes/día de 25 € de ticket medio"],
+            ["Cuota necesaria para el objetivo del año 1 (47.000 €)", "≈ 2,9 %", "Facturación objetivo ÷ gasto total del entorno"],
+            ["Clientes necesarios para ese objetivo", "≈ 145 compras/mes", "5–6 clientes/día de 27 € de ticket medio"],
         ],
         widths=[0.34, 0.26, 0.40], left_cols=[0],
     ),
-    CALLOUT("info", "Por qué la cuota del 2–3 % es realista (y no una promesa)",
-            "Una tienda de barrio no compite por el 100 % del mercado: compite por el porcentaje que sus clientes le dan por **proximidad, marca y novedad**. Con 8.000 niños en el entorno, alcanzar 3–4 clientes al día (104 al mes) es captar una parte mínima del gasto que ya existe. Además, la tienda online añade un mercado nacional sin coste fijo adicional, y los artículos de regalo/impulso elevan el ticket medio por encima de los 25 € usados en el cálculo — el escenario es prudente."),
+    CALLOUT("info", "Por qué la cuota del 3 % es realista (y no una promesa)",
+            "Una tienda de barrio no compite por el 100 % del mercado: compite por el porcentaje que sus clientes le dan por **proximidad, marca y novedad**. Con 8.000 niños en el entorno, alcanzar 5–6 clientes al día (145 al mes) es captar una parte mínima del gasto que ya existe. Además, la tienda online añade un mercado nacional sin coste fijo adicional, y los artículos de regalo/impulso elevan el ticket medio por encima de los 27 € usados en el cálculo — el escenario es prudente."),
 
     S("03.1", "COMPETENCIA Y DIFERENCIACIÓN", "Con quién compite KHC y dónde está su hueco",
       "KHC no compite de frente con nadie: compite por el mismo presupuesto familiar desde un posicionamiento distinto. Este análisis identifica los competidores reales del entorno y las ventajas con las que KHC se diferencia."),
