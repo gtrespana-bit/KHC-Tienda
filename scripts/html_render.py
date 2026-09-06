@@ -7,8 +7,11 @@ import html as _html
 
 from plan_data import META, COLORS
 from plan_data import (SECTION_1, SECTION_2, SECTION_3, SECTION_4, SECTION_5)
-from plan_data2 import (SECTION_6, SECTION_7, SECTION_8, SECTION_9, SECTION_10,
-                        SECTION_11, SECTION_12, SECTION_13, SECTION_14, SECTION_15)
+from plan_data2 import (SECTION_6, SECTION_7, SECTION_8, SECTION_9, SECTION_15,
+                        SECTION_16, SECTION_17, SECTION_18, SECTION_19, SECTION_21)
+from plan_data3 import (SECTION_10, SECTION_11, SECTION_12, SECTION_13,
+                        SECTION_14, SECTION_20)
+from plan_data4 import SECTION_22
 from plan_charts import line_svg
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -208,7 +211,8 @@ def toc_entries():
     out = []
     for secs in [SECTION_1, SECTION_2, SECTION_3, SECTION_4, SECTION_5, SECTION_6,
                  SECTION_7, SECTION_8, SECTION_9, SECTION_10, SECTION_11, SECTION_12,
-                 SECTION_13, SECTION_14, SECTION_15]:
+                 SECTION_13, SECTION_14, SECTION_15, SECTION_16, SECTION_17, SECTION_18,
+                 SECTION_19, SECTION_20, SECTION_21, SECTION_22]:
         for b in secs:
             if b["t"] == "section":
                 out.append((b["num"], b["kicker"], b["title"]))
@@ -459,7 +463,8 @@ def build_html():
     sections = []
     for secs in [SECTION_1, SECTION_2, SECTION_3, SECTION_4, SECTION_5, SECTION_6,
                  SECTION_7, SECTION_8, SECTION_9, SECTION_10, SECTION_11, SECTION_12,
-                 SECTION_13, SECTION_14, SECTION_15]:
+                 SECTION_13, SECTION_14, SECTION_15, SECTION_16, SECTION_17, SECTION_18,
+                 SECTION_19, SECTION_20, SECTION_21, SECTION_22]:
         sections.append("".join(render_block(b) for b in secs))
     m = META
     doc = f"""<!DOCTYPE html>

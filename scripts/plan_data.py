@@ -10,7 +10,7 @@ META = {
     "document": "Plan de Negocio",
     "subtitle": "Tienda de moda infantil 0–12 años · Marca propia",
     "location": "Oleiros · A Coruña · Galicia",
-    "edition": "Edición Septiembre 2026 · v1.4",
+    "edition": "Edición Septiembre 2026 · v1.5",
     "confidential": "Documento de trabajo — cifras orientativas, en revisión continua",
 }
 
@@ -128,7 +128,7 @@ SECTION_1 = [
         ],
         widths=[0.30, 0.28, 0.42], left_cols=[0, 1],
     ),
-    P("**Los números de este documento están calculados en detalle en las secciones 6–9** (inversión línea por línea, gastos mensuales, márgenes por categoría y escenarios de venta) y son reproducibles con los CSV incluidos en el repositorio."),
+    P("**Los números de este documento están calculados en detalle en las secciones 6–13** (inversión línea por línea, gastos mensuales, márgenes, proyección de ingresos, cuenta de resultados prevista, plan de tesorería y análisis de escenarios) y son reproducibles con los CSV incluidos en el repositorio."),
 ]
 
 # ----------------------------------------------------------------------------
@@ -171,7 +171,7 @@ SECTION_2 = [
     ),
 
     CALLOUT("info", "Forma jurídica inicial: autónoma",
-            "Se empieza como **autónoma** con tarifa plana (80 €/mes el primer año) y, en Galicia, con la **cuota cero** para nuevos autónomos (devolución de cuotas durante hasta 2 años sujeto a requisitos). El cambio a **SL** se valora cuando la facturación estable supere **60.000 €/año**. Detalle completo en la sección 11."),
+            "Se empieza como **autónoma** con tarifa plana (80 €/mes el primer año) y, en Galicia, con la **cuota cero** para nuevos autónomos (devolución de cuotas durante hasta 2 años sujeto a requisitos). El cambio a **SL** se valora cuando la facturación estable supere **60.000 €/año**. Detalle completo en la sección 16."),
 
     S("02.1", "LA UBICACIÓN", "Por qué Oleiros y no el centro de A Coruña",
       "La ubicación no es un detalle: es la mitad del negocio. KHC es una tienda de proximidad, y la proximidad en ropa infantil significa familias jóvenes con niños pequeños a menos de 10 minutos andando."),
@@ -202,6 +202,47 @@ SECTION_2 = [
     ]),
     CALLOUT("warn", "Zonas a descartar al principio",
             "Centros comerciales grandes (Marineda): alquileres de 1.800–3.500 €/mes y competencia directa con H&M, Zara Kids y multinacionales. Calles de paso nocturno/fiesta. Locales estrechos con escaparate pequeño (la venta en infantil es visual) y locales que exijan reforma estructural."),
+
+    S("02.2", "EQUIPO Y ORGANIZACIÓN", "Quién hace cada cosa, cuántas horas y qué empleo se crea",
+      "Un negocio pequeño se organiza por roles, no por organigramas. Este es el reparto real de tareas, el tiempo de dedicación y la previsión de empleo para los próximos 5 años (dato que piden la mayoría de convocatorias)."),
+    TABLE(
+        ["Rol", "Quién", "Dedicación inicial", "Tareas principales"],
+        [
+            ["Dirección, compras y venta", "Ella (promotora, autónoma)", "Jornada completa (física en tienda)", "Atención al cliente, compras y pedidos a China, gestión de caja, redes sociales, análisis semanal de ventas"],
+            ["Acondicionamiento del local", "Él (empresa de reformas)", "Proyecto puntual (meses −4 a 0)", "Reforma a coste de materiales (1.900 €); factura a KHC como gasto de apertura"],
+            ["Web, tecnología y soporte", "Él (empresa de reformas)", "2–4 h/semana los primeros meses", "Tienda online, dominio/hosting, TPV, cámaras, mantenimiento"],
+            ["Estrategia y finanzas", "Ambos", "1 h/semana", "Revisión de KPIs, decisiones de stock, seguimiento de tesorería"],
+            ["Gestoría y asesoría fiscal", "Gestor externo", "70 €/mes", "Contabilidad, impuestos, nóminas futuras, ayudas"],
+            ["Agente de compras en China", "Externo", "Comisión 5–8 % del pedido", "Negociación con fábricas, inspección de calidad, logística y aduanas"],
+            ["Ayuda en tienda (temporada alta)", "Contratación a media jornada", "Desde el año 3 (1.000 €/mes de coste)", "Refuerzo en Navidad, vuelta al cole y comuniones; libera a la promotora para compras"],
+        ],
+        widths=[0.22, 0.22, 0.24, 0.32], left_cols=[0],
+    ),
+    P("**Previsión de empleo (en puestos equivalentes a jornada completa):**"),
+    TABLE(
+        ["Periodo", "Empleo ETC", "Detalle"],
+        [
+            ["Año 1", "1,0", "Promotora a jornada completa (autónoma). Sin nóminas: los ingresos externos cubren lo personal"],
+            ["Año 2", "1,0", "Promotora a jornada completa; se valora una ayuda a media jornada en Navidad"],
+            ["Año 3", "1,5", "Promotora + ayuda a media jornada contratada (coste ~1.000 €/mes en picos)"],
+            ["Año 4", "1,75", "Promotora en dirección + empleada a media jornada estable"],
+            ["Año 5", "2,0", "Promotora en dirección + 1 empleada a jornada completa; posible segunda tienda"],
+        ],
+        widths=[0.14, 0.16, 0.70], left_cols=[0],
+    ),
+    CALLOUT("info", "Por qué el modelo es casi «sin nómina» al principio",
+            "La estructura deliberadamente evita costes fijos de personal durante los primeros 18 meses: la promotora trabaja como autónoma (su retribución sale del beneficio, no de una nómina) y los ingresos de la empresa de reformas cubren lo personal. Eso permite que la inversión inicial baje a 21.010 € y que el punto de equilibrio sea de 92 €/día en lugar de 145 €/día. El empleo se crea cuando la caja lo sostiene: año 3."),
+
+    S("02.3", "SOSTENIBILIDAD, IGUALDAD E INNOVACIÓN", "Los tres ejes que valoran las convocatorias",
+      "Las ayudas al comercio (IGAPE, Consellería, fondos Next Generation) puntúan explícitamente estos tres ejes. Este proyecto los cumple de forma natural, no forzada."),
+    GRID([
+        ("🌱", "Sostenibilidad",
+         "Comercio de proximidad (reduce desplazamientos y apoya el tejido local); iluminación LED y eficiencia energética; packaging de papel reciclado con el logo KHC; tejidos con certificación OEKO-TEX; stock reducido = menos excedentes y menos residuo textil; compras consolidadas en contenedor compartido (menos emisiones por prenda)."),
+        ("⚖️", "Igualdad",
+         "Proyecto **liderado por una mujer** como promotora y autónoma; empresa familiar con conciliación (tienda a minutos de casa); horarios adaptados a la vida del barrio; compras a proveedores que cumplen normativa laboral (auditoría y Trade Assurance)."),
+        ("💡", "Innovación",
+         "**Marca propia** (no reventa): diseño y etiqueta KHC; **rotación cada 3–4 semanas** con reposiciones por avión; **e-commerce propio** y marketing digital segmentado (Instagram, TikTok, SEO local); datos de venta por modelo para decidir compras; TPV y WhatsApp Business; modelo de negocio difícil de replicar por la competencia de barrio."),
+    ]),
 ]
 
 # ----------------------------------------------------------------------------
@@ -227,7 +268,39 @@ SECTION_3 = [
         widths=[0.24, 0.24, 0.16, 0.36], left_cols=[0],
     ),
 
-    P("**Tamaño del mercado local (cálculo rápido y conservador).** Un radio de 15 km alrededor de Oleiros concentra decenas de miles de familias con niños de 0–12 años. Con un ticket medio de 25 € y el objetivo del primer año de ~2.600 €/mes, el negocio necesita **~104 compras al mes**, es decir **3–4 clientes al día**. Aunque solo el 1–2 % de las familias del entorno compren cada mes en KHC, el objetivo se supera con holgura; y la tienda online abre el mercado a toda España desde el día uno."),
+    P("**Tamaño del mercado y demanda potencial (método bottom-up del «barrio»).** El mercado objetivo se estima a partir del entorno real, no de cifras macro: en el entorno de Oleiros (Santa Cruz, Perillo, Bastiagueiro, Dorneda) viven, de forma conservadora, **más de 8.000 niños de 0–12 años** (una población de ~40.000 habitantes en el entorno con una estructura de edad joven, superior a la media gallega). Con un gasto medio de ~200 €/año por niño en ropa, el gasto anual en ropa infantil del entorno ronda los **1,6 millones de €**. KHC solo necesita captar el **2–3 %** de ese gasto (32.000–48.000 €/año) para alcanzar el objetivo del primer año. Es un objetivo alcanzable con 3–4 clientes al día."),
+    TABLE(
+        ["Parámetro de demanda", "Valor conservador", "Fuente / hipótesis"],
+        [
+            ["Población del entorno de Oleiros (área de influencia 3–5 km)", "≈ 40.000 habitantes", "Cifras de población municipal del entorno; zonas residenciales consolidadas"],
+            ["Niños de 0–12 años estimados", "≈ 8.000 (20 %)", "Estructura de edad joven del área, superior a la media gallega"],
+            ["Gasto medio anual en ropa infantil por niño", "≈ 200 €", "Gasto medio en moda infantil España; rango 150–250 € según nivel adquisitivo"],
+            ["Gasto total en ropa infantil del entorno", "≈ 1,6 M€/año", "8.000 niños × 200 €"],
+            ["Cuota necesaria para el objetivo del año 1 (32.000–36.000 €)", "2,0–2,3 %", "Facturación objetivo ÷ gasto total del entorno"],
+            ["Clientes necesarios para ese objetivo", "≈ 104 compras/mes", "3–4 clientes/día de 25 € de ticket medio"],
+        ],
+        widths=[0.34, 0.26, 0.40], left_cols=[0],
+    ),
+    CALLOUT("info", "Por qué la cuota del 2–3 % es realista (y no una promesa)",
+            "Una tienda de barrio no compite por el 100 % del mercado: compite por el porcentaje que sus clientes le dan por **proximidad, marca y novedad**. Con 8.000 niños en el entorno, alcanzar 3–4 clientes al día (104 al mes) es captar una parte mínima del gasto que ya existe. Además, la tienda online añade un mercado nacional sin coste fijo adicional, y los artículos de regalo/impulso elevan el ticket medio por encima de los 25 € usados en el cálculo — el escenario es prudente."),
+
+    S("03.1", "COMPETENCIA Y DIFERENCIACIÓN", "Con quién compite KHC y dónde está su hueco",
+      "KHC no compite de frente con nadie: compite por el mismo presupuesto familiar desde un posicionamiento distinto. Este análisis identifica los competidores reales del entorno y las ventajas con las que KHC se diferencia."),
+    TABLE(
+        ["Competidor / alternativa", "Tipo", "Fortaleza", "Debilidad frente a KHC"],
+        [
+            ["Multinacionales y cadenas (H&M Kids, Zara Kids, Primark, Lefties)", "Moda de volumen", "Precio, stock masivo, marca conocida", "Sin marca propia, sin asesoramiento, ropa «de colección» que se repite; no hacen regalo personalizado"],
+            ["Tiendas multimarca de bebé (boutiques de A Coruña)", "Especializadas", "Surtido amplio de marcas", "Márgenes bajos (son intermediarios), precios altos; pocas con tienda online propia"],
+            ["Puericultura y farmacias", "Bebé funcional", "Marca de confianza, tráfico alto", "No venden ropa de moda ni regalo; compra funcional, no emocional"],
+            ["Online (Amazon, Shein, Temu, Zalando)", "Precio y comodidad", "Precio, catálogo infinito", "Cliente de barrio valora tocar la tela, tallar en persona y el regalo con envase bonito; sin trato humano ni urgencia"],
+            ["Jugueterías y supermercados", "Regalo genérico", "Volumen, conocido", "No especializadas en bebé; regalo sin personalización KHC"],
+            ["Segunda mano (Vinted, Wallapop)", "Precio", "Muy barato", "Sin garantía de calidad, sin marca, sin experiencia de compra; no compite por el mismo cliente de regalo"],
+        ],
+        widths=[0.28, 0.16, 0.26, 0.30], left_cols=[0],
+    ),
+    P("**La conclusión competitiva es clara:** el hueco de KHC está entre la moda de volumen (que no personaliza ni asesora) y la tienda funcional de puericultura (que no hace moda ni regalo). KHC cubre ese espacio con **marca propia a precio medio, asesoramiento real, producto de regalo con packaging propio y proximidad**."),
+    CALLOUT("success", "La barrera de entrada que KHC construye (y por qué no es fácil de copiar)",
+            "El modelo se apoya en 4 ventajas difíciles de replicar por la competencia: (1) **margen del 70 %** por fabricación directa con marca propia — un multimarca no puede bajar precios sin perder margen; (2) **relación de barrio**: la clientela repite porque la conocen, es la ventaja de la tienda física frente al online; (3) **rotación cada 3–4 semanas**: la competencia trabaja con temporada larga y no renueva el escaparate; (4) **canal propio online y WhatsApp** con la marca KHC, que convierte la tienda en una marca, no en un punto de venta."),
 
     CALLOUT("tip", "Estacionalidad: la curva que hay que respetar",
             "La ropa infantil es extraordinariamente estacional: **Navidad, reyes, comuniones y vuelta al cole** concentran la facturación. El plan de pedidos a China tiene que trabajar al revés: el stock de Navidad se pide en julio–agosto, el de comuniones en enero–febrero y el de primavera en noviembre–diciembre. La estrategia de rotación rápida (pedidos pequeños + refuerzos por avión en 7–10 días) es el seguro contra los picos imprevistos."),

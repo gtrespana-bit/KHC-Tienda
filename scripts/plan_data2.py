@@ -160,7 +160,7 @@ SECTION_8 = [
         widths=[0.22, 0.16, 0.22, 0.14, 0.14, 0.12], left_cols=[0],
     ),
     P("**Conclusión:** la pérdida máxima acumulada esperada es de ~410 € en el mes 2 y se recupera en el mes 4. Con 4.000 € de fondo hay 2,4 meses de gastos completos de margen de seguridad. **Y si las ventas fueran la mitad de lo previsto** (por ejemplo 1.200 €/mes los primeros 4 meses), se perderían ~500 €/mes y el fondo aguantaría 8 meses: tiempo más que suficiente para reaccionar (reforzar marketing, ajustar pedidos, añadir online, abrir horarios)."),
-    P("**Regla de decisión:** si al mes 6 la caja está por debajo de 3.500 €, se activa el plan B (sección 15): menos reposición, más pauta local, promociones de temporada y revisión del alquiler. El fondo de maniobra existe precisamente para que esas decisiones se tomen con calma y no con urgencia."),
+    P("**Regla de decisión:** si al mes 6 la caja está por debajo de 3.500 €, se activa el plan B (sección 19): menos reposición, más pauta local, promociones de temporada y revisión del alquiler. El fondo de maniobra existe precisamente para que esas decisiones se tomen con calma y no con urgencia."),
 ]
 
 # ----------------------------------------------------------------------------
@@ -168,33 +168,35 @@ SECTION_8 = [
 # ----------------------------------------------------------------------------
 
 SECTION_9 = [
-    S("09", "PROYECCIÓN Y CRECIMIENTO", "Año 1, año 2 y año 3: qué esperar de verdad",
-      "Una tienda nueva de barrio no es una línea recta de beneficios: es una curva de aprendizaje, fidelización y ajuste de surtido. Este escenario es orientativo y conservador: sirve para planificar, no para prometer."),
+    S("09", "VISIÓN DE CRECIMIENTO", "Cómo crece KHC: de tienda de barrio a marca",
+      "La proyección financiera detallada está en las secciones 10–13 (mes a mes, 5 años, tesorería y sensibilidad). Aquí, la lógica de crecimiento: en qué orden se invierte cada euro de beneficio y qué palanca se activa en cada fase."),
 
     TABLE(
-        ["Periodo", "Ventas anuales", "Margen bruto (70 %)", "Beneficio aprox.", "Objetivo estratégico"],
+        ["Fase", "Facturación objetivo", "Palanca principal", "Qué se consigue"],
         [
-            ["Año 1", "32.000–36.000 €", "22.400–25.200 €", "2.000–5.000 €", "Aprender el surtido, fidelizar, abrir el canal online, pico fuerte en Navidad"],
-            ["Año 2", "45.000–55.000 €", "31.500–38.500 €", "8.000–14.000 €", "Repetir los modelos ganadores, añadir calzado, consolidar el online y las colaboraciones"],
-            ["Año 3+", "60.000 €+", "42.000 €+", "18.000 €+", "Reinvertir (stock, segunda tienda, personal) y valorar el paso a SL"],
+            ["Año 1 — Demostrar", "33.000 €", "Rotación de stock + marketing local", "Surtido depurado, 3–4 clientes/día, caja > 6.000 €, primer año con datos reales"],
+            ["Año 2 — Consolidar", "45.000 €", "Canal online + fidelización", "Online al 20 % de ventas, retribución de 6.000 € para la promotora, calzado incorporado"],
+            ["Año 3 — Rentabilizar", "55.000 €", "Mix premium (regalo + eventos) + colaboraciones", "Retribución de 9.000 €, beneficio retenido para crecimiento, evaluación de SL"],
+            ["Año 4 — Escalar", "62.000 €", "Personal auxiliar + mayor rotación", "La dueña pasa a dirección; más horas de tienda; segundo ciclo de compras optimizado"],
+            ["Año 5 — Marca", "70.000 €", "Posible segunda ubicación o franquicia ligera", "Facturación > 60.000 €: momento de decidir SL y estructura de crecimiento"],
         ],
-        widths=[0.10, 0.18, 0.20, 0.16, 0.36], left_cols=[0, 1, 2, 3],
+        widths=[0.16, 0.16, 0.30, 0.38], left_cols=[0, 1],
     ),
-    CALLOUT("warn", "Lectura honesta del año 1",
-            "El año 1 probablemente no sea rentable en términos de retribución personal: es el año de **demostrar el modelo**. El plan contempla que ella no cobra sueldo al principio (los ingresos de la empresa de reformas cubren lo personal) precisamente para que el negocio llegue al año 2 sin deudas y con la lección aprendida. Si el año 1 cierra en positivo, el plan va por delante de lo previsto."),
 
-    S("09.1", "¿CÓMO SE ESCALA?", "Las palancas, en orden de impacto"),
+    S("09.1", "LAS PALANCAS", "En qué orden se invierte el beneficio"),
     STEPS([
         ("Stock y rotación (primera palanca)", "Cuando se sabe qué modelos venden, se suben los pedidos de los ganadores y se recorta a los que no. Más rotación = más margen con menos metros."),
         ("Canal online", "La web propia convierte a KHC en una marca con alcance nacional: envíos con ticket medio 35–55 € y coste marginal casi nulo. El objetivo es que el online sea el 20–30 % de la facturación en el año 2."),
         ("Calzado (mes 6 en adelante)", "Sin calzado en la apertura; a partir del segundo semestre, si la rotación de ropa lo justifica, calzado portugués de marca propia: margen alto y cercanía logística con Galicia."),
-        ("Eventos y colaboraciones", "Colecciones de comunión/Temporada alta, colaboraciones con guarderías y colegios de la zona, y presencia en ferias locales: cada evento es un pico de facturación planificable."),
-        ("Equipo y segunda tienda (año 3+)", "Con facturación estable > 60–70 k, la SL tiene sentido fiscal y se abre la puerta a ampliar, incorporar socios o una segunda ubicación."),
+        ("Eventos y colaboraciones", "Colecciones de comunión/temporada alta, colaboraciones con guarderías y colegios de la zona, y presencia en ferias locales: cada evento es un pico de facturación planificable."),
+        ("Equipo y segunda tienda (año 4–5)", "Con facturación estable > 60.000 € y beneficio > 15.000 €/año, la SL tiene sentido fiscal y se abre la puerta a ampliar, incorporar socios o una segunda ubicación."),
     ]),
+    CALLOUT("info", "La regla de inversión del beneficio",
+            "Cada 1.000 € de stock extra que rota a 3,5× genera ~2.500 € de margen bruto anual. Por eso el beneficio del año 1 se reinvierte en **stock ganador y marketing**, no en equipamiento ni en retribución: el dinero que produce crecimiento es el que está en la mercancía que se vende."),
     GRID([
-        ("🚀", "Inversión inteligente año 1", "El beneficio del año 1 se reinvierte en stock (no en extras): cada 1.000 € de stock que rota a 3,5× genera 2.500 € de margen bruto al año."),
-        ("📈", "Indicadores que se vigilan", "Ventas/día, ticket medio, unidades vendidas por categoría, % de stock rotado, coste de adquisición por cliente (marketing/ventas), caja."),
+        ("📈", "Indicadores que se vigilan", "Ventas/día, ticket medio, unidades por categoría, % de stock rotado, coste de adquisición por cliente, caja. Definición completa en la sección 20."),
         ("🧭", "Regla del 70 %", "Mientras el margen bruto se mantenga ≥ 70 % y la caja suba mes a mes, se puede acelerar; si baja de 65 %, se para la expansión y se revisa el surtido."),
+        ("🎯", "Regla del 20–30 %", "Mantener el marketing entre el 20–30 % del gasto de estructura (340 € sobre ~1.670 €/mes): es el gasto que convierte una tienda de barrio en la referencia de su zona."),
     ]),
 ]
 
@@ -202,8 +204,8 @@ SECTION_9 = [
 # SECCIÓN 10 · MARKETING Y VENTAS
 # ----------------------------------------------------------------------------
 
-SECTION_10 = [
-    S("10", "MARKETING Y VENTAS", "El plan 360º: abrir con ruido y no desaparecer",
+SECTION_15 = [
+    S("15", "MARKETING Y VENTAS", "El plan 360º: abrir con ruido y no desaparecer",
       "Una tienda de barrio no se llena sola: se llena con un sistema simple y constante. Este es el plan de marketing completo, presupuestado y realista: 200 € de apertura + 340 €/mes de continuidad."),
 
     TABLE(
@@ -234,8 +236,8 @@ SECTION_10 = [
 # SECCIÓN 11 · FORMA JURÍDICA
 # ----------------------------------------------------------------------------
 
-SECTION_11 = [
-    S("11", "FORMA JURÍDICA", "Autónoma ahora, SL cuando toque",
+SECTION_16 = [
+    S("16", "FORMA JURÍDICA", "Autónoma ahora, SL cuando toque",
       "La decisión fiscal más importante del proyecto tiene una respuesta clara y sin mitos: **empezar como autónoma** los primeros 18–24 meses y pasar a SL cuando la facturación estable supere 60.000 €/año con planes de crecimiento confirmados."),
 
     TABLE(
@@ -285,8 +287,8 @@ SECTION_11 = [
 # SECCIÓN 12 · AYUDAS Y FINANCIACIÓN
 # ----------------------------------------------------------------------------
 
-SECTION_12 = [
-    S("12", "AYUDAS, SUBVENCIONES Y FINANCIACIÓN", "El dinero que se puede recuperar (y cómo pedirlo)",
+SECTION_17 = [
+    S("17", "AYUDAS, SUBVENCIONES Y FINANCIACIÓN", "El dinero que se puede recuperar (y cómo pedirlo)",
       "Hay ayudas muy relevantes para este proyecto concreto, especialmente por tres motivos: es una mujer emprendedora, es un retorno de emigración (Venezuela) y se implanta en Galicia. **La regla de oro: muchas ayudas se solicitan ANTES del alta de actividad, no después.**"),
 
     TABLE(
@@ -312,8 +314,8 @@ SECTION_12 = [
 # SECCIÓN 13 · PREPARACIÓN DE APERTURA (CRONOGRAMA)
 # ----------------------------------------------------------------------------
 
-SECTION_13 = [
-    S("13", "HOJA DE RUTA", "Los 12 pasos desde hoy hasta la apertura (4–7 meses)",
+SECTION_18 = [
+    S("18", "HOJA DE RUTA", "Los 12 pasos desde hoy hasta la apertura (4–7 meses)",
       "El plazo total depende del local y de la licencia, pero la secuencia es fija. La clave: **el pedido a China se hace en paralelo a la reforma**, porque es lo que más tarda (3–4 meses)."),
 
     TIMELINE([
@@ -338,8 +340,8 @@ SECTION_13 = [
 # SECCIÓN 14 · RIESGOS Y MITIGACIÓN
 # ----------------------------------------------------------------------------
 
-SECTION_14 = [
-    S("14", "RIESGOS Y PLAN B", "Los 8 riesgos reales y cómo se gestionan",
+SECTION_19 = [
+    S("19", "RIESGOS Y PLAN B", "Los 8 riesgos reales y cómo se gestionan",
       "Un plan de negocio honesto lista los riesgos antes de que ocurran y deja escrito el plan B para cada uno. Estos son los riesgos concretos de KHC y su mitigación."),
 
     TABLE(
@@ -364,8 +366,8 @@ SECTION_14 = [
 # SECCIÓN 15 · ANEXOS
 # ----------------------------------------------------------------------------
 
-SECTION_15 = [
-    S("15", "ANEXOS Y PRÓXIMOS PASOS", "Detalle completo, fuentes y lo que viene ahora",
+SECTION_21 = [
+    S("21", "ANEXOS Y PRÓXIMOS PASOS", "Detalle completo, fuentes y lo que viene ahora",
       "Los anexos reproducen al detalle los CSV del repositorio (inversión, gastos y márgenes), para que cualquier cifra de este plan sea auditable y actualizable."),
 
     P("**Anexo A — Inversión inicial (detalle CSV):**"),

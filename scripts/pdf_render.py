@@ -20,8 +20,11 @@ from reportlab.platypus.tableofcontents import TableOfContents
 from svglib.svglib import svg2rlg
 
 from plan_data import META, COLORS, SECTION_1, SECTION_2, SECTION_3, SECTION_4, SECTION_5
-from plan_data2 import (SECTION_6, SECTION_7, SECTION_8, SECTION_9, SECTION_10,
-                        SECTION_11, SECTION_12, SECTION_13, SECTION_14, SECTION_15)
+from plan_data2 import (SECTION_6, SECTION_7, SECTION_8, SECTION_9, SECTION_15,
+                        SECTION_16, SECTION_17, SECTION_18, SECTION_19, SECTION_21)
+from plan_data3 import (SECTION_10, SECTION_11, SECTION_12, SECTION_13,
+                        SECTION_14, SECTION_20)
+from plan_data4 import SECTION_22
 from plan_charts import donut_svg_doc, bars_svg, line_svg
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -654,7 +657,18 @@ def draw_content(canv, doc):
     canv.drawRightString(w - RM, 30, f"{doc.page}")
     canv.restoreState()
 
-SHORT_TITLES = {'01': 'Resumen ejecutivo', '02': 'El proyecto', '02.1': 'Ubicación', '03': 'Mercado y cliente', '04': 'Producto y surtido', '04.1': 'Qué no se trae', '05': 'Fabricación y suministro', '05.1': 'Fábricas y agentes', '05.2': 'MOQ y plazos', '05.3': 'Calidad y pagos', '05.4': 'Fabricar vs comprar', '05.5': 'Checklist del pedido', '06': 'Inversión inicial', '07': 'Gastos fijos', '08': 'Márgenes y equilibrio', '08.1': 'Escenarios de venta', '08.2': 'Fondo de maniobra', '09': 'Proyección y crecimiento', '09.1': 'Cómo se escala', '10': 'Marketing y ventas', '11': 'Forma jurídica', '12': 'Ayudas y financiación', '13': 'Hoja de ruta', '14': 'Riesgos y plan B', '15': 'Anexos y próximos pasos'}
+SHORT_TITLES = {
+ "01":"Resumen ejecutivo","02":"El proyecto","02.1":"Ubicación","03":"Mercado y cliente",
+ "03.1":"Competencia","04":"Producto y surtido","04.1":"Qué no se trae","05":"Fabricación y suministro",
+ "05.1":"Fábricas y agentes","05.2":"MOQ y plazos","05.3":"Calidad y pagos",
+ "05.4":"Fabricar vs comprar","05.5":"Checklist del pedido","06":"Inversión inicial",
+ "07":"Gastos fijos","08":"Márgenes y equilibrio","08.1":"Escenarios de venta",
+ "08.2":"Fondo de maniobra","09":"Visión de crecimiento","09.1":"Las palancas","11.1":"Rentabilidad de la inversión",
+ "10":"Proyección de ingresos","11":"Proyección a 5 años","12":"Plan de tesorería",
+ "13":"Sensibilidad y escenarios","14":"DAFO y plan estratégico","14.1":"Objetivos medibles",
+ "15":"Marketing y ventas","16":"Forma jurídica","17":"Ayudas y financiación",
+ "18":"Hoja de ruta","19":"Riesgos y plan B","20":"Cuadro de mando","21":"Anexos y próximos pasos","22":"Ficha para convocatorias",
+}
 
 class PlanDoc(BaseDocTemplate):
     def afterFlowable(self, flowable):
@@ -670,7 +684,8 @@ class PlanDoc(BaseDocTemplate):
 def build_pdf(out_path):
     sections = [SECTION_1, SECTION_2, SECTION_3, SECTION_4, SECTION_5, SECTION_6,
                 SECTION_7, SECTION_8, SECTION_9, SECTION_10, SECTION_11, SECTION_12,
-                SECTION_13, SECTION_14, SECTION_15]
+                SECTION_13, SECTION_14, SECTION_15, SECTION_16, SECTION_17, SECTION_18,
+                SECTION_19, SECTION_20, SECTION_21, SECTION_22]
 
     toc = TableOfContents()
     toc.levelStyles = [
