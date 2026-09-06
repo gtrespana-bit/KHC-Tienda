@@ -36,7 +36,12 @@ Plan de negocio real para abrir **KHC**, tienda de ropa infantil con marca propi
 
 **Versión premium (recomendada):**
 - 🎨 `docs/KHC_Plan_Negocio_Premium.html` — Plan visual interactivo (abre en el navegador; incluye botón «Imprimir / Guardar PDF»)
-- 🖨 `docs/KHC_Plan_Negocio_Premium.pdf` — Versión imprimible premium A4 (45 páginas, índice automático)
+- 🖨 `docs/KHC_Plan_Negocio_Premium.pdf` — Versión imprimible premium A4 (52 páginas, índice automático)
+
+**Pensado para leerse, no solo para presentarse:** cada sección abre con un recuadro
+«Lo esencial» (resumen de 20 segundos), el índice incluye 4 rutas de lectura
+(solo números / ayudas / arrancar / completa), tipografía amplia y componentes
+visuales variados (tarjetas KPI, gráficos, cronogramas, DAFO).
 
 **El plan incluye el análisis completo (22 secciones, 36 subsecciones):**
 - **Bloque económico-financiero:** proyección de ingresos mes a mes con estacionalidad real,

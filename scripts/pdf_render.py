@@ -19,7 +19,8 @@ from reportlab.platypus import (BaseDocTemplate, PageTemplate, Frame, Paragraph,
 from reportlab.platypus.tableofcontents import TableOfContents
 from svglib.svglib import svg2rlg
 
-from plan_data import META, COLORS, SECTION_1, SECTION_2, SECTION_3, SECTION_4, SECTION_5
+from plan_data import (META, COLORS, estimate_minutes,
+                    SECTION_1, SECTION_2, SECTION_3, SECTION_4, SECTION_5)
 from plan_data2 import (SECTION_6, SECTION_7, SECTION_8, SECTION_9, SECTION_15,
                         SECTION_16, SECTION_17, SECTION_18, SECTION_19, SECTION_21)
 from plan_data3 import (SECTION_10, SECTION_11, SECTION_12, SECTION_13,
@@ -110,25 +111,28 @@ def style(name, **kw):
     return ParagraphStyle(name, **base)
 
 S = {
-    "body": style("body"),
-    "lead": style("lead", fontName=PN, fontSize=11.4, leading=15.6, textColor=C["navy2"],
-                  alignment=TA_LEFT, spaceAfter=10),
-    "intro": style("intro", fontName=PN, fontSize=10.2, leading=14.4, textColor=C["navy2"],
-                   alignment=TA_LEFT, spaceAfter=8),
-    "cell": style("cell", fontSize=7.7, leading=10.4, alignment=TA_LEFT, spaceAfter=0),
-    "cellc": style("cellc", fontSize=7.7, leading=10.4, alignment=TA_CENTER, spaceAfter=0),
-    "cellr": style("cellr", fontSize=7.7, leading=10.4, alignment=TA_CENTER, spaceAfter=0),
-    "head": style("head", fontName=FB, fontSize=7.0, leading=9.2, textColor=colors.white,
+    "body": style("body", fontSize=9.1, leading=13.6, alignment=TA_LEFT, spaceAfter=7),
+    "lead": style("lead", fontName=PN, fontSize=12.2, leading=17.2, textColor=C["navy2"],
+                  alignment=TA_LEFT, spaceAfter=11),
+    "intro": style("intro", fontName=PN, fontSize=10.8, leading=15.6, textColor=C["navy2"],
+                   alignment=TA_LEFT, spaceAfter=10),
+    "cell": style("cell", fontSize=7.9, leading=11.2, alignment=TA_LEFT, spaceAfter=0),
+    "cellc": style("cellc", fontSize=7.9, leading=11.2, alignment=TA_CENTER, spaceAfter=0),
+    "cellr": style("cellr", fontSize=7.9, leading=11.2, alignment=TA_CENTER, spaceAfter=0),
+    "head": style("head", fontName=FB, fontSize=7.1, leading=9.4, textColor=colors.white,
                   alignment=TA_LEFT, spaceAfter=0),
-    "callout_t": style("callout_t", fontName=FN, fontSize=8.8, leading=11.6, textColor=C["navy"],
+    "callout_t": style("callout_t", fontName=FN, fontSize=9.2, leading=12.2, textColor=C["navy"],
                        alignment=TA_LEFT, spaceAfter=2),
-    "callout_b": style("callout_b", fontSize=7.9, leading=11.2, alignment=TA_LEFT, spaceAfter=0),
-    "note": style("note", fontName=FN, fontSize=7.0, leading=9.6, textColor=C["muted"],
-                  alignment=TA_LEFT, spaceAfter=8),
+    "callout_b": style("callout_b", fontSize=8.3, leading=12.2, alignment=TA_LEFT, spaceAfter=0),
+    "note": style("note", fontName=FN, fontSize=7.4, leading=10.4, textColor=C["muted"],
+                  alignment=TA_LEFT, spaceAfter=9),
+    "ess_title": style("ess_title", fontName=FB, fontSize=7.0, leading=9.4, textColor=C["gold2"],
+                       alignment=TA_LEFT, spaceAfter=0),
+    "ess_b": style("ess_b", fontSize=8.5, leading=12.4, alignment=TA_LEFT, spaceAfter=0),
     "quote": style("quote", fontName=f"{SERIF}-I", fontSize=12.4, leading=17, textColor=C["navy"],
                    alignment=TA_CENTER, spaceAfter=0),
-    "chartcap": style("chartcap", fontName=FN, fontSize=6.8, leading=8.6, textColor=C["gold2"],
-                      alignment=TA_LEFT, spaceAfter=6),
+    "chartcap": style("chartcap", fontName=FN, fontSize=6.9, leading=9.0, textColor=C["gold2"],
+                      alignment=TA_LEFT, spaceAfter=7),
 }
 
 def P(text, st=S["body"]):
@@ -137,12 +141,12 @@ def P(text, st=S["body"]):
 # ------------------------------------------------------------ flowables propios
 
 class SecHeader(Flowable):
-    def __init__(self, num, kicker, title, sub=False):
+    def __init__(self, num, kicker, title, sub=False, mins=None):
         super().__init__()
-        self.num, self.kicker, self.title, self.sub = num, kicker, title, sub
+        self.num, self.kicker, self.title, self.sub, self.mins = num, kicker, title, sub, mins
 
     def wrap(self, aw, ah):
-        self.width, self.height = aw, 40 if self.sub else 54
+        self.width, self.height = aw, 40 if self.sub else 56
         return (aw, self.height)
 
     def draw(self):
@@ -175,6 +179,10 @@ class SecHeader(Flowable):
                 y -= 14
         else:
             c.drawString(x0 + 46, self.height - 30, msg)
+        # chip de lectura
+        if self.mins and not self.sub:
+            sp_text(c, self.width, self.height - 8,
+                    f"LECTURA  ~{self.mins} MIN", f"{FONT}-B", 5.9, 1.1, C["gold2"], align="r")
         # regla
         c.setStrokeColor(C["line"])
         c.setLineWidth(0.5)
@@ -339,6 +347,38 @@ def line_block(b, aw):
         out.append(Spacer(1, 4)); out.append(P(b["note"], S["note"]))
     return out
 
+
+def essence_block(b, aw):
+    """Recuadro 'Lo esencial' — resumen de 20 segundos al inicio de cada sección."""
+    items = [x for x in (b.get("ess") or [])]
+    if not items:
+        return []
+    rows = []
+    half = (len(items) + 1) // 2
+    for i in range(half):
+        left = items[i]
+        right = items[i + half] if i + half < len(items) else ""
+        lt = Paragraph(f"<font color='#A58142'>›</font>&nbsp;&nbsp;{rl_markup(left)}", S["ess_b"]) if left else ""
+        rt = Paragraph(f"<font color='#A58142'>›</font>&nbsp;&nbsp;{rl_markup(right)}", S["ess_b"]) if right else ""
+        rows.append([lt, rt])
+    title = Paragraph("LO ESENCIAL — LEER EN 20 SEGUNDOS", S["ess_title"])
+    t = Table([[title, ""], *rows], colWidths=[(aw - 26) / 2, (aw - 26) / 2])
+    t.setStyle(TableStyle([
+        ("BACKGROUND", (0, 0), (-1, -1), HexColor("#FBF6EA")),
+        ("BOX", (0, 0), (-1, -1), 0.6, HexColor("#E8DCC3")),
+        ("LINEBEFORE", (0, 0), (0, -1), 3, C["gold"]),
+        ("VALIGN", (0, 0), (-1, -1), "TOP"),
+        ("TOPPADDING", (0, 0), (-1, 0), 10),
+        ("BOTTOMPADDING", (0, 0), (-1, 0), 4),
+        ("TOPPADDING", (0, 1), (-1, -1), 4.5),
+        ("BOTTOMPADDING", (0, 1), (-1, -1), 4.5),
+        ("LEFTPADDING", (0, 0), (-1, -1), 13),
+        ("RIGHTPADDING", (0, 0), (-1, -1), 12),
+        ("LINEBELOW", (0, 0), (-1, 0), 0.5, HexColor("#E8DCC3")),
+        ("LINEBEFORE", (int((len(rows) or 1) > 0), 0), (int((len(rows) or 1) > 0), -1), 0.5, HexColor("#E8DCC3")),
+    ]))
+    return [KeepTogether([Spacer(1, 2), t, Spacer(1, 10)])]
+
 def table_block(b, aw):
     cols = b["cols"]
     widths = b.get("widths")
@@ -359,12 +399,12 @@ def table_block(b, aw):
         ("VALIGN", (0, 0), (-1, -1), "TOP"),
         ("TOPPADDING", (0, 0), (-1, 0), 6),
         ("BOTTOMPADDING", (0, 0), (-1, 0), 6),
-        ("TOPPADDING", (0, 1), (-1, -1), 5),
-        ("BOTTOMPADDING", (0, 1), (-1, -1), 5),
+        ("TOPPADDING", (0, 1), (-1, -1), 6.5),
+        ("BOTTOMPADDING", (0, 1), (-1, -1), 6.5),
         ("LEFTPADDING", (0, 0), (-1, -1), 6),
         ("RIGHTPADDING", (0, 0), (-1, -1), 6),
         ("LINEBELOW", (0, 1), (-1, -1), 0.35, C["line"]),
-        ("ROWBACKGROUNDS", (0, 1), (-1, -1), [colors.white, HexColor("#FBF8F1")]),
+        ("ROWBACKGROUNDS", (0, 1), (-1, -1), [colors.white, HexColor("#FCFAF5")]),
     ]
     for r in b.get("hl") or []:
         sty += [("BACKGROUND", (0, r + 1), (-1, r + 1), HexColor("#F4EAD8")),
@@ -497,20 +537,27 @@ def kpis_block(b):
 def quote_block(b, aw):
     return [Spacer(1, 10), Quote(b["text"], FRAME_W), Spacer(1, 12)]
 
-def blocks_to_story(blocks, story, aw):
-    for b in blocks:
+def blocks_to_story(blocks, story, aw, mins_map=None):
+    mins_map = mins_map or {}
+    for idx, b in enumerate(blocks):
         t = b["t"]
         if t == "section":
             sub = b["num"].count(".") > 0
             if not sub:
                 story.append(PageBreak())
+                story.append(SecHeader(b["num"], b["kicker"], b["title"], sub=sub,
+                                       mins=mins_map.get(b["num"])))
+                if b.get("intro"):
+                    story.append(Spacer(1, 5))
+                    story.append(P(b["intro"], S["intro"]))
+                story += essence_block(b, aw)
             else:
                 story.append(Spacer(1, 8))
-            story.append(SecHeader(b["num"], b["kicker"], b["title"], sub=sub))
-            if b.get("intro"):
-                story.append(Spacer(1, 6))
-                story.append(P(b["intro"], S["intro"]))
-                story.append(Spacer(1, 4))
+                story.append(SecHeader(b["num"], b["kicker"], b["title"], sub=sub))
+                if b.get("intro"):
+                    story.append(Spacer(1, 5))
+                    story.append(P(b["intro"], S["intro"]))
+                story.append(Spacer(1, 2))
         elif t == "lead":
             story.append(P(b["html"], S["lead"]))
             story.append(Spacer(1, 6))
@@ -562,6 +609,12 @@ def sp_text(c, x, y, txt, font, size, space, color, align="l"):
     t.setFillColor(color)
     t.textOut(txt)
     c.drawText(t)
+    # resetear el tracking del stream (reportlab no lo limpia solo)
+    if space:
+        r = c.beginText(0, 0)
+        r.setCharSpace(0)
+        r.textOut("")
+        c.drawText(r)
 
 def draw_cover(canv, doc):
     canv.saveState()
@@ -696,6 +749,11 @@ def build_pdf(out_path):
     ]
     toc.dotsMinLevel = 0
 
+    # tiempo de lectura por sección
+    mins_map = {}
+    for secs in sections:
+        mins_map.update(estimate_minutes(secs))
+
     story = []
     story.append(NextPageTemplate("Content"))
     story.append(PageBreak())
@@ -705,12 +763,43 @@ def build_pdf(out_path):
     story.append(P("CONTENIDO", S["chartcap"]))
     story.append(Paragraph("Índice del plan", style("ind_t", fontName="Playfair-B", fontSize=17,
                                                     leading=22, textColor=C["navy"],
-                                                    alignment=TA_LEFT, spaceAfter=10)))
+                                                    alignment=TA_LEFT, spaceAfter=3)))
+    total_min = sum(v for k, v in mins_map.items() if k.count(".") == 0)
+    story.append(Paragraph(f"<font color='#A58142'><i>22 secciones · {total_min} minutos de lectura · "
+                           f"cada sección abre con su resumen de 20 segundos</i></font>",
+                           style("ind_sub", fontName=f"{SERIF}-I", fontSize=8.8, leading=12,
+                                 alignment=TA_LEFT, spaceAfter=12)))
     story.append(toc)
-    story.append(Spacer(1, 18))
+    story.append(Spacer(1, 16))
+
+    # --- rutas de lectura
+    story.append(P("CÓMO LEER ESTE PLAN", S["chartcap"]))
+    paths = [
+        ["Ruta", "Secciones", "Para qué sirve"],
+        ["**Solo números**", "06 · 07 · 08 · 10 · 11 · 12 · 13", "Revisar cifras, decidir la inversión o preparar financiación"],
+        ["**Para la solicitud de ayudas**", "02.2 · 02.3 · 05 · 17 · 22", "Lo que evalúan IGAPE, Consellería y Emigración"],
+        ["**Para arrancar esta semana**", "02.1 · 17 · 18 · 19 · 21", "Local, ayudas, pedido a China y plan B"],
+        ["**Lectura completa**", "01 → 22", "Todo el plan, para vosotros y como documento adjunto"],
+    ]
+    pt = Table([[Paragraph(clean(c).upper(), S["head"]) for c in paths[0]]] +
+               [[Paragraph(rl_markup(c), S["cell"]) for c in row] for row in paths[1:]],
+               colWidths=[FRAME_W * 0.20, FRAME_W * 0.30, FRAME_W * 0.50], repeatRows=1)
+    pt.setStyle(TableStyle([
+        ("BACKGROUND", (0, 0), (-1, 0), C["navy"]),
+        ("VALIGN", (0, 0), (-1, -1), "TOP"),
+        ("TOPPADDING", (0, 0), (-1, 0), 6),
+        ("BOTTOMPADDING", (0, 0), (-1, 0), 6),
+        ("TOPPADDING", (0, 1), (-1, -1), 6),
+        ("BOTTOMPADDING", (0, 1), (-1, -1), 6),
+        ("LEFTPADDING", (0, 0), (-1, -1), 7),
+        ("RIGHTPADDING", (0, 0), (-1, -1), 7),
+        ("LINEBELOW", (0, 1), (-1, -1), 0.35, C["line"]),
+        ("ROWBACKGROUNDS", (0, 1), (-1, -1), [colors.white, HexColor("#FCFAF5")]),
+    ]))
+    story.append(pt)
 
     for secs in sections:
-        blocks_to_story(secs, story, FRAME_W)
+        blocks_to_story(secs, story, FRAME_W, mins_map)
 
     doc = PlanDoc(out_path, pagesize=A4, leftMargin=LM, rightMargin=RM, topMargin=TM,
                   bottomMargin=BM, title="KHC · Plan de Negocio",

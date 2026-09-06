@@ -10,7 +10,8 @@ from plan_data import (S, P, LEAD, QUOTE, KPIS, TABLE, CALLOUT, GRID, STEPS,
 
 SECTION_6 = [
     S("06", "PLAN ECONÓMICO", "Inversión inicial: línea por línea, sin inflar",
-      "La inversión total para abrir KHC en Oleiros con el surtido completo es de **21.010 €**, todo incluido: local, reforma con mano de obra propia, imagen de marca, mobiliario, equipamiento, stock completo, legal, web, marketing de apertura y caja para los primeros meses."),
+      "La inversión total para abrir KHC en Oleiros con el surtido completo es de **21.010 €**, todo incluido: local, reforma con mano de obra propia, imagen de marca, mobiliario, equipamiento, stock completo, legal, web, marketing de apertura y caja para los primeros meses.",
+      ess=["21.010 € línea por línea, sin inflar", "Stock 8.690 € + fondo de maniobra 4.000 € + resto 8.320 €", "Reforma a coste de materiales (1.900 €) y web propia (120 €)", "Desembolso escalonado en ~4 meses"]),
 
     DONUT("Composición de la inversión inicial — 21.010 €",
           "21.010 €", "inversión total para abrir",
@@ -64,7 +65,8 @@ SECTION_6 = [
 
 SECTION_7 = [
     S("07", "GASTOS FIJOS MENSUALES", "1.670 €/mes y cada euro explicado",
-      "Los gastos fijos incluyen TODO lo que hay que pagar cada mes funcione o no la tienda: alquiler, cuota de autónoma, suministros, gestoría, seguro, web y marketing continuo. No incluyen sueldo durante los primeros meses ni el coste de la mercancía (que es variable: solo se paga si se vende)."),
+      "Los gastos fijos incluyen TODO lo que hay que pagar cada mes funcione o no la tienda: alquiler, cuota de autónoma, suministros, gestoría, seguro, web y marketing continuo. No incluyen sueldo durante los primeros meses ni el coste de la mercancía (que es variable: solo se paga si se vende).",
+      ess=["1.670 €/mes con TODO incluido", "Alquiler y comunidad: 800 €/mes · Marketing: 340 €/mes", "Cuota autónoma 80 € (tarifa plana) y cuota cero en Galicia", "Sin sueldo al inicio: el punto de equilibrio baja a 92 €/día"]),
 
     BARS("Desglose mensual de los 1.670 €", "€/mes", [
         ("Alquiler + comunidad", 800, COLORS["navy"]),
@@ -105,7 +107,8 @@ SECTION_7 = [
 
 SECTION_8 = [
     S("08", "MÁRGENES Y PUNTO DE EQUILIBRIO", "Cuánto hay que vender para no perder dinero (y para vivir)",
-      "Esta es la sección que convierte el plan en números útiles: margen bruto del ~70 % sobre el coste real puesto en tienda, punto de equilibrio diario, escenarios de sueldo y la justificación del fondo de maniobra de 4.000 €."),
+      "Esta es la sección que convierte el plan en números útiles: margen bruto del ~70 % sobre el coste real puesto en tienda, punto de equilibrio diario, escenarios de sueldo y la justificación del fondo de maniobra de 4.000 €.",
+      ess=["Margen medio ~70 %; complementos y regalo hasta el 90 %", "Equilibrio: 2.390 €/mes ≈ 92 €/día (3–4 clientes de 25 €)", "Sueldo 1.000 € → 158 €/día · 2.000 € → 224 €/día", "Fondo de 4.000 € = 2,4 meses de gastos de colchón"]),
 
     P("**El margen bruto.** Cada prenda se compra a su coste real (fábrica + importación: factor 1,55 × FOB) y se vende a 3,4–3,9 × ese coste. Resultado: un margen bruto medio del **70 %** (68–75 % en ropa, 75–90 % en complementos y regalo, 55–60 % en marca española). Esto significa que **por cada 100 € vendidos, quedan 70 € para pagar gastos fijos y generar beneficio**; la mercancía cuesta 30 €."),
 
@@ -169,7 +172,8 @@ SECTION_8 = [
 
 SECTION_9 = [
     S("09", "VISIÓN DE CRECIMIENTO", "Cómo crece KHC: de tienda de barrio a marca",
-      "La proyección financiera detallada está en las secciones 10–13 (mes a mes, 5 años, tesorería y sensibilidad). Aquí, la lógica de crecimiento: en qué orden se invierte cada euro de beneficio y qué palanca se activa en cada fase."),
+      "La proyección financiera detallada está en las secciones 10–13 (mes a mes, 5 años, tesorería y sensibilidad). Aquí, la lógica de crecimiento: en qué orden se invierte cada euro de beneficio y qué palanca se activa en cada fase.",
+      ess=["Año 1 demostrar · año 2 consolidar · año 3 rentabilizar · año 4 escalar · año 5 marca", "Palanca 1: rotación de stock · palanca 2: online · palanca 3: calzado", "El beneficio se reinvierte en stock ganador, no en extras"]),
 
     TABLE(
         ["Fase", "Facturación objetivo", "Palanca principal", "Qué se consigue"],
@@ -206,7 +210,8 @@ SECTION_9 = [
 
 SECTION_15 = [
     S("15", "MARKETING Y VENTAS", "El plan 360º: abrir con ruido y no desaparecer",
-      "Una tienda de barrio no se llena sola: se llena con un sistema simple y constante. Este es el plan de marketing completo, presupuestado y realista: 200 € de apertura + 340 €/mes de continuidad."),
+      "Una tienda de barrio no se llena sola: se llena con un sistema simple y constante. Este es el plan de marketing completo, presupuestado y realista: 200 € de apertura + 340 €/mes de continuidad.",
+      ess=["200 € de apertura + 340 €/mes de marketing continuo", "Pauta local 8–9 €/día en un radio de 15 km", "Escaparate cada 2 semanas y 3 publicaciones por semana", "Google Maps y reseñas: la compra de barrio empieza online"]),
 
     TABLE(
         ["Fase", "Acción", "Coste", "Objetivo"],
@@ -238,7 +243,8 @@ SECTION_15 = [
 
 SECTION_16 = [
     S("16", "FORMA JURÍDICA", "Autónoma ahora, SL cuando toque",
-      "La decisión fiscal más importante del proyecto tiene una respuesta clara y sin mitos: **empezar como autónoma** los primeros 18–24 meses y pasar a SL cuando la facturación estable supere 60.000 €/año con planes de crecimiento confirmados."),
+      "La decisión fiscal más importante del proyecto tiene una respuesta clara y sin mitos: **empezar como autónoma** los primeros 18–24 meses y pasar a SL cuando la facturación estable supere 60.000 €/año con planes de crecimiento confirmados.",
+      ess=["Autónoma 18–24 meses; SL a partir de 60.000 €/año", "Tarifa plana 80 € + cuota cero de Galicia", "La SL cuesta +2.200 a +3.500 € el primer año", "Pasar luego cuesta ~1.000 € y 2–3 semanas"]),
 
     TABLE(
         ["Mito", "Realidad"],
@@ -289,7 +295,8 @@ SECTION_16 = [
 
 SECTION_17 = [
     S("17", "AYUDAS, SUBVENCIONES Y FINANCIACIÓN", "El dinero que se puede recuperar (y cómo pedirlo)",
-      "Hay ayudas muy relevantes para este proyecto concreto, especialmente por tres motivos: es una mujer emprendedora, es un retorno de emigración (Venezuela) y se implanta en Galicia. **La regla de oro: muchas ayudas se solicitan ANTES del alta de actividad, no después.**"),
+      "Hay ayudas muy relevantes para este proyecto concreto, especialmente por tres motivos: es una mujer emprendedora, es un retorno de emigración (Venezuela) y se implanta en Galicia. **La regla de oro: muchas ayudas se solicitan ANTES del alta de actividad, no después.**",
+      ess=["Potencial de 4.000–12.000 € entre ayudas y ahorro", "Cuota cero, tarifa plana, retornadas y modernización", "Regla de oro: solicitar ANTES del alta de actividad", "La inversión neta puede quedar por debajo de 15.000 €"]),
 
     TABLE(
         ["Ayuda / programa", "Importe potencial", "Para qué", "Estado / cómo se tramita"],
@@ -316,7 +323,8 @@ SECTION_17 = [
 
 SECTION_18 = [
     S("18", "HOJA DE RUTA", "Los 12 pasos desde hoy hasta la apertura (4–7 meses)",
-      "El plazo total depende del local y de la licencia, pero la secuencia es fija. La clave: **el pedido a China se hace en paralelo a la reforma**, porque es lo que más tarda (3–4 meses)."),
+      "El plazo total depende del local y de la licencia, pero la secuencia es fija. La clave: **el pedido a China se hace en paralelo a la reforma**, porque es lo que más tarda (3–4 meses).",
+      ess=["4–7 meses desde hoy hasta la apertura", "Pedido a China en paralelo a la reforma (es lo que más tarda)", "12 pasos secuenciados semana a semana", "Semanas 8–12: el momento crítico (pedido + obra)"]),
 
     TIMELINE([
         ("Semana 1–2", "Contactar oficinas de apoyo y ayudas", "Oficina do Emprendedor, Ayuntamiento y Secretaría Xeral da Emigración. Nada de firmar alquiler antes de saber qué ayudas existen."),
@@ -342,7 +350,8 @@ SECTION_18 = [
 
 SECTION_19 = [
     S("19", "RIESGOS Y PLAN B", "Los 8 riesgos reales y cómo se gestionan",
-      "Un plan de negocio honesto lista los riesgos antes de que ocurran y deja escrito el plan B para cada uno. Estos son los riesgos concretos de KHC y su mitigación."),
+      "Un plan de negocio honesto lista los riesgos antes de que ocurran y deja escrito el plan B para cada uno. Estos son los riesgos concretos de KHC y su mitigación.",
+      ess=["8 riesgos identificados, cada uno con su mitigación", "Retrasos en China: el más probable → pedir con antelación", "Plan B (mes 6): si la caja baja de 3.500 €, 5 acciones claras", "El fondo de maniobra existe para decidir con calma"]),
 
     TABLE(
         ["Riesgo", "Impacto", "Mitigación"],
@@ -368,33 +377,22 @@ SECTION_19 = [
 
 SECTION_21 = [
     S("21", "ANEXOS Y PRÓXIMOS PASOS", "Detalle completo, fuentes y lo que viene ahora",
-      "Los anexos reproducen al detalle los CSV del repositorio (inversión, gastos y márgenes), para que cualquier cifra de este plan sea auditable y actualizable."),
+      "Los anexos reproducen al detalle los CSV del repositorio (inversión, gastos y márgenes), para que cualquier cifra de este plan sea auditable y actualizable.",
+      ess=["Todos los detalles y CSV reproducibles", "Anexos: inversión, márgenes por producto y fuentes", "Próximo paso: actualizar cifras cuando haya local", "Checklist de esta semana para arrancar"]),
 
-    P("**Anexo A — Inversión inicial (detalle CSV):**"),
+    P("**Anexo A — Inversión por bloques** (la línea por línea completa está en la sección 06 y en `calculos/01_inversion_inicial.csv`):"),
     TABLE(
-        ["Partida", "Importe", "Origen y justificación"],
+        ["Bloque", "Importe", "Partidas incluidas"],
         [
-            ["Fianza alquiler (2 meses a 750 €)", "1.500 €", "Alquiler comercial en Oleiros 40–50 m²: 750 €/mes; fianza legal de 2 meses"],
-            ["Primer mes de alquiler", "750 €", "Mes corriente al firmar el contrato"],
-            ["Traspaso", "0 €", "Se busca local vacío; con traspaso se descarta"],
-            ["Pintura, suelo vinílico LVT, LED, probador, reparaciones (materiales)", "1.900 €", "Mano de obra propia; ahorro de 730 € frente al presupuesto anterior"],
-            ["Rótulo, vinilo escaparate, logo, etiquetas, bolsas", "770 €", "Recorte de 450 € frente a la versión anterior (imprenta local, sin luminoso)"],
-            ["Mobiliario (percheros, mostrador, estanterías, maniquíes 2ª mano, espejos)", "950 €", "Segunda mano y construcción propia; ahorro de 740 €"],
-            ["TPV, cajón, etiquetadora, cámaras, extintor", "300 €", "Sin TPV caro ni impresora de tickets al inicio"],
-            ["Stock ropa KHC (825 prendas, 30 modelos)", "5.500 €", "≈ 3.550 € FOB × 1,55; puesto en Oleiros"],
-            ["Stock bebé/regalo KHC", "2.000 €", "≈ 435 uds; márgenes 75–85 %"],
-            ["Marca España bebé (Suavinex, Nuk, Avent)", "530 €", "≈ 180 uds; márgenes 55–60 %"],
-            ["Juguete pequeño", "310 €", "≈ 90 uds; madera, libros tela, peluche"],
-            ["Complementos KHC", "350 €", "≈ 530 uds; calcetines, diademas, gorros, baberos"],
-            ["Alta autónoma, licencia, seguro, revisión contrato", "650 €", "Local < 50 m²: obra menor más económica"],
-            ["Web: dominio + hosting 1 año", "120 €", "Desarrollo propio"],
-            ["Marketing de apertura", "200 €", "Campaña pre-apertura + evento"],
-            ["Altas de suministros", "180 €", "Luz + agua; fibra con instalación de regalo"],
-            ["Reserva de imprevistos", "1.000 €", "Rebajada de 2.000 € por obra propia"],
-            ["Fondo de maniobra", "4.000 €", "Caja para los primeros meses"],
-            ["**TOTAL**", "**21.010 €**", "**≈ 21.000 € con margen**"],
+            ["Local", "2.250 €", "Fianza (2 meses) + primer mes de alquiler a 750 €"],
+            ["Obra e imagen", "2.670 €", "Reforma a coste de materiales (1.900 €) + rótulo, vinilos, logo, etiquetas y bolsas (770 €)"],
+            ["Mobiliario y equipamiento", "1.250 €", "Percheros, mostrador, estanterías, maniquíes, espejos (950 €) + TPV, cajón, etiquetadora, cámaras, extintor (300 €)"],
+            ["Stock inicial completo", "8.690 €", "Ropa KHC (5.500) + bebé/regalo KHC (2.000) + marca España (530) + juguete (310) + complementos (350)"],
+            ["Legal, web, marketing y suministros", "1.150 €", "Licencia y seguro (650) + dominio y hosting (120) + apertura (200) + altas de suministros (180)"],
+            ["Reserva y fondo de maniobra", "5.000 €", "Imprevistos (1.000) + caja de los primeros meses (4.000)"],
+            ["**INVERSIÓN TOTAL**", "**21.010 €**", "**Todas las partidas del desglose de la sección 06**"],
         ],
-        widths=[0.48, 0.14, 0.38], left_cols=[0, 1], hl=[18],
+        widths=[0.24, 0.16, 0.60], left_cols=[0, 1], hl=[6],
     ),
     PAGEBREAK(),
     P("**Anexo B — Márgenes por producto (resumen del CSV):**"),

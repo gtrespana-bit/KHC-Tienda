@@ -31,7 +31,8 @@ def _rows_mensual():
 
 SECTION_10 = [
     S("10", "PROYECCIÓN DE INGRESOS", "Mes a mes: el año 1 con estacionalidad real",
-      "Aquí se ve cómo se comporta la tienda a lo largo de un año completo: los meses flojos, los picos de Navidad y vuelta al cole, y cómo evoluciona la caja. Los supuestos son conservadores y se explican para que se puedan discutir o ajustar."),
+      "Aquí se ve cómo se comporta la tienda a lo largo de un año completo: los meses flojos, los picos de Navidad y vuelta al cole, y cómo evoluciona la caja. Los supuestos son conservadores y se explican para que se puedan discutir o ajustar.",
+      ess=["Año 1 completo mes a mes con estacionalidad real", "Picos: vuelta al cole y Navidad · valles: rebajas y agosto", "Caja mínima 2.780 € (mes 4) y cierre con 7.032 €", "Resultado del año 1: +3.032 € antes de impuestos"]),
 
     P("**Supuestos de la proyección (escenario base año 1):**"),
     CHECKBOXES([
@@ -70,7 +71,8 @@ SECTION_10 = [
 
 SECTION_11 = [
     S("11", "PROYECCIÓN A 5 AÑOS", "Cuenta de resultados prevista y rentabilidad",
-      "La proyección a 5 años responde a las preguntas que hace cualquier convocatoria de ayudas: ¿cuánto se venderá, cuánto se ganará, cuánto se puede retribuir la promotora y cuándo se recupera la inversión?"),
+      "La proyección a 5 años responde a las preguntas que hace cualquier convocatoria de ayudas: ¿cuánto se venderá, cuánto se ganará, cuánto se puede retribuir la promotora y cuándo se recupera la inversión?",
+      ess=["Ventas: 33.000 € (año 1) → 70.000 € (año 5)", "Beneficio neto: 1.920 € → 14.770 €", "Retribución promotora: desde el año 2, hasta 12.500 €/año", "VAN +36.920 € · TIR 42 % · payback 2,6 años"]),
 
     P("**Escenario base quinquenal (ventas físicas + online con crecimiento por fidelización y rotación):**"),
     TABLE(
@@ -129,7 +131,8 @@ SECTION_11 = [
 
 SECTION_12 = [
     S("12", "PLAN DE TESORERÍA", "De dónde sale el dinero, cuándo se gasta y cuándo vuelve",
-      "Una tienda no muere por no ser rentable: muere por quedarse sin liquidez. Este plan de tesorería muestra la necesidad de financiación, el calendario de desembolsos y el colchón de seguridad."),
+      "Una tienda no muere por no ser rentable: muere por quedarse sin liquidez. Este plan de tesorería muestra la necesidad de financiación, el calendario de desembolsos y el colchón de seguridad.",
+      ess=["Necesidad 21.010 €, desembolsada en 4 meses", "Financiación: 15.000 € ahorro + 3.000 € ayudas + 3.010 € banco", "Colchón de caja: 5.000 € = 3 meses de gastos", "Revisión semanal: caja real, cobros, stock y pagos"]),
 
     P("**Necesidad de financiación (la inversión de la sección 6, vista como dinero):**"),
     TABLE(
@@ -177,7 +180,8 @@ SECTION_12 = [
 
 SECTION_13 = [
     S("13", "SENSIBILIDAD Y ESCENARIOS", "Qué pasa si las cosas van distintas a lo previsto",
-      "El plan base es una hipótesis; el valor del plan está en saber qué ocurre si esa hipótesis falla. Este análisis somete la cuenta de resultados del año 1 a variaciones realistas y define cuándo se activa cada plan de contingencia."),
+      "El plan base es una hipótesis; el valor del plan está en saber qué ocurre si esa hipótesis falla. Este análisis somete la cuenta de resultados del año 1 a variaciones realistas y define cuándo se activa cada plan de contingencia.",
+      ess=["Resiste −20 % de ventas: la caja queda en ~2.440 €", "Margen < 65 % es el límite: renegociar costes", "Umbral de caja: 22.900 €/año (no se toca el fondo)", "Ticket medio: la variable más controlable"]),
 
     P("**Sensibilidad del resultado del año 1 (sobre 32.960 € de ventas y 1.670 €/mes de gastos):**"),
     TABLE(
@@ -216,7 +220,8 @@ SECTION_13 = [
 
 SECTION_14 = [
     S("14", "DAFO Y PLAN ESTRATÉGICO", "Diagnóstico completo y objetivos a 12, 24 y 36 meses",
-      "El DAFO recoge todo lo analizado en las secciones anteriores en una sola vista: las fortalezas que se explotan, las debilidades que se corrigen, las oportunidades que se aprovechan y las amenazas que se vigilan. Después, el plan estratégico lo convierte en objetivos medibles."),
+      "El DAFO recoge todo lo analizado en las secciones anteriores en una sola vista: las fortalezas que se explotan, las debilidades que se corrigen, las oportunidades que se aprovechan y las amenazas que se vigilan. Después, el plan estratégico lo convierte en objetivos medibles.",
+      ess=["Margen 70 % + obra y web propias: fortalezas estructurales", "Marca desconocida: se corrige con presencia semanal", "Ayudas 4.000–12.000 €: la oportunidad clave", "Importación y estacionalidad: las amenazas a vigilar"]),
 
     TWOCOL(
         "💪 Fortalezas (internas)",
@@ -275,7 +280,8 @@ SECTION_14 = [
 
 SECTION_20 = [
     S("20", "CUADRO DE MANDO", "Los 10 indicadores que se vigilan cada semana",
-      "Un plan sin medición es una opinión. Estos son los indicadores que la promotora revisa cada semana (30 minutos) y mensualmente (1 hora), con su fórmula y su objetivo."),
+      "Un plan sin medición es una opinión. Estos son los indicadores que la promotora revisa cada semana (30 minutos) y mensualmente (1 hora), con su fórmula y su objetivo.",
+      ess=["10 KPIs con fórmula, objetivo y acción si fallan", "Rutina: lunes 10 minutos, mes 1 hora", "Ventas/día ≥ 92 €: el termómetro semanal", "Dos reglas de oro: margen ≥ 70 % y caja ≥ 4.000 €"]),
 
     TABLE(
         ["Indicador", "Fórmula", "Objetivo año 1", "Frecuencia", "Si falla…"],

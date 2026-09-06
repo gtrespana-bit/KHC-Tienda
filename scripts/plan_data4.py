@@ -6,7 +6,8 @@ from plan_data import (S, P, LEAD, QUOTE, KPIS, TABLE, CALLOUT, GRID, STEPS,
 
 SECTION_22 = [
     S("22", "FICHA PARA CONVOCATORIAS", "Resumen de 1 página listo para formularios",
-      "Esta ficha sintetiza el proyecto en el formato que piden los formularios de ayudas (IGAPE, Consellería de Emprego, Secretaría Xeral da Emigración, Ayuntamiento de A Coruña, Kit Digital). Rellena los datos, imprime esta página y adjúntala al plan completo."),
+      "Esta ficha sintetiza el proyecto en el formato que piden los formularios de ayudas (IGAPE, Consellería de Emprego, Secretaría Xeral da Emigración, Ayuntamiento de A Coruña, Kit Digital). Rellena los datos, imprime esta página y adjúntala al plan completo.",
+      ess=["Una página lista para formularios de ayudas", "Identificación, resumen económico y ayudas a solicitar", "Pendiente: nombre, CNAE, presupuestos y certificado de retornada", "Adjuntar al plan completo al presentar"]),
 
     P("**Datos identificativos del proyecto:**"),
     TABLE(

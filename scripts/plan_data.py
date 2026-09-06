@@ -33,8 +33,45 @@ COLORS = {
     "amber": "#C88A2E",
 }
 
-def S(num, kicker, title, intro=""):
-    return {"t": "section", "num": num, "kicker": kicker, "title": title, "intro": intro}
+def S(num, kicker, title, intro="", ess=None):
+    return {"t": "section", "num": num, "kicker": kicker, "title": title, "intro": intro, "ess": ess}
+
+
+def estimate_minutes(secs_list):
+    """Tiempo de lectura estimado por sección (para chips de lectura)."""
+    import re as _re
+    mins = {}
+    for si, b in enumerate(secs_list):
+        if b["t"] != "section" or b["num"].count("."):
+            continue
+        ws = 0
+        def add(t):
+            nonlocal ws
+            if isinstance(t, str):
+                ws += len(_re.sub(r"[*`#\[\]<>/]", "", t).split())
+        add(b.get("kicker", "")); add(b.get("title", "")); add(b.get("intro", ""))
+        if b.get("ess"):
+            ws += sum(len(x.split()) for x in b["ess"])
+        for bb in secs_list[si + 1:]:
+            if bb["t"] == "section" and bb["num"].count(".") == 0:
+                break
+            for v in bb.values():
+                if isinstance(v, str):
+                    add(v)
+                elif isinstance(v, (list, tuple)):
+                    for x in v:
+                        if isinstance(x, str):
+                            add(x)
+                        elif isinstance(x, (list, tuple)):
+                            for y in x:
+                                if isinstance(y, str):
+                                    add(y)
+                                elif isinstance(y, (list, tuple)):
+                                    for z in y:
+                                        if isinstance(z, str):
+                                            add(z)
+        mins[b["num"]] = max(1, round(ws / 170))
+    return mins
 
 def P(html):
     return {"t": "p", "html": html}
@@ -99,9 +136,13 @@ def SPACER(pts=10):
 
 SECTION_1 = [
     S("01", "RESUMEN EJECUTIVO",
-      "La oportunidad: una tienda de barrio con margen de marca propia",
-      "KHC es una tienda de ropa infantil (0–12 años) con marca propia, ubicada en un barrio residencial de Oleiros (A Coruña). Ropa fabricada directamente en China con la etiqueta KHC, tienda física de barrio, e-commerce propio y una política de stock reducido con novedades cada 3–4 semanas."),
-    LEAD("**La idea en una frase:** ropa infantil de calidad media-alta, fabricada con marca propia para lograr márgenes del 70 %, vendida en una tienda cercana y moderna donde los padres vuelven cada mes a ver novedades, con venta online y marketing local desde el día uno."),
+      "La oportunidad, en dos frases",
+      "KHC es una tienda de ropa infantil (0–12 años) con marca propia en un barrio residencial de Oleiros (A Coruña): fabricación directa en China con la etiqueta KHC, tienda física, online propia y marketing local desde el primer día.",
+      ess=["Inversión: 21.010 € con todo incluido para abrir",
+           "Margen ~70 % por marca propia → equilibrio a 92 €/día",
+           "Año 1: 32.960 € de ventas y caja que no baja de 2.700 €",
+           "VAN +36.920 € · TIR 42 % · recuperación en 2,6 años"]),
+    LEAD("**La idea en una frase:** ropa infantil de calidad media-alta con marca propia, vendida en una tienda cercana donde los padres vuelven cada mes a ver novedades."),
 
     KPIS([
         ("≈ 21.010 €", "INVERSIÓN TOTAL", "Todo incluido: local, reformas, stock, marca, legal y caja"),
@@ -112,32 +153,50 @@ SECTION_1 = [
         ("4–7 meses", "TIEMPO HASTA ABRIR", "Desde hoy hasta apertura: local → reformas → primer pedido China"),
     ]),
 
-    P("**Por qué funciona.** La tienda no compite por precio con las multinacionales ni por volumen con el canal online: compite por **proximidad, marca y novedad**. La fabricación directa (5.500 € de ropa KHC puesta en tienda, frente a los ~9.000 € que costaría el mismo surtido comprado a proveedores españoles) deja un margen bruto del 68–75 %, y los complementos y artículos de regalo suben hasta el 80–85 %. Con gastos fijos de 1.670 €/mes, bastan **~92 € de venta al día** para no perder dinero, y ~160 €/día para que ella empiece a cobrar 1.000 €/mes."),
-    P("**Por qué ahora.** Oleiros tiene una densidad de familias jóvenes con nivel adquisitivo medio-alto muy superior a la media gallega, alquileres de 650–900 €/mes para locales de 40–50 m² (frente a 1.200–2.500 € en el centro de A Coruña), y un tejido de comercio local donde una tienda especializada en bebé y regalo tiene un hueco claro. Además, la reforma la hace tu empresa (solo se paga material), la web la desarrolla él sin coste, y los ingresos de tu actividad de reformas permiten que el negocio no necesite sueldo los primeros meses, lo que reduce la inversión inicial en ~4.000 €."),
+    P("**El modelo, en cuatro piezas:**"),
+    GRID([
+        ("🧵", "Marca propia", "Fábricas chinas producen con la etiqueta KHC: margen ~70 % frente al 55–60 % de la reventa."),
+        ("📍", "Tienda de barrio", "Oleiros: familias jóvenes, nivel adquisitivo medio-alto y poca competencia infantil."),
+        ("🌐", "Online + redes", "Web propia y marketing local de 340 €/mes: la tienda se ve cada semana, no solo el día de apertura."),
+        ("🔄", "Stock corto", "Novedades cada 3–4 semanas: poco capital atrapado y clientela que vuelve."),
+    ]),
 
-    CALLOUT("success", "Las 6 ventajas diferenciales de KHC", "<ol><li><b>Reformas con mano de obra propia:</b> solo se paga material (1.900 € en vez de 6.000–8.000 €).</li><li><b>Fabricación directa en China → márgenes ~70 %</b> (8–12 puntos más que comprando a distribuidores).</li><li><b>Web desarrollada internamente:</b> sin coste de desarrollo, ~10 €/mes de dominio y hosting.</li><li><b>Alquiler contenido en Oleiros:</b> 750 €/mes por local de 40–50 m².</li><li><b>Ingresos de tu empresa de reformas</b> cubren lo personal los primeros meses: ella no cobra sueldo inicial y el fondo de maniobra baja a 4.000 €.</li><li><b>Stock reducido + rotación rápida:</b> novedades cada 3–4 semanas, menos capital atrapado y cero mercancía vieja.</li></ol>"),
+    P("**Por qué funciona.** No compite por precio con las multinacionales ni por volumen con el online: compite por **proximidad, marca y novedad**. Con gastos fijos de 1.670 €/mes y margen del 70 %, bastan **~92 € al día** —3–4 clientes de 25 €— para no perder dinero. Y hay dos ventajas que pocos proyectos tienen: la reforma la hace vuestra empresa (solo se paga material) y los ingresos de esa actividad cubren lo personal los primeros meses, lo que baja la inversión en ~4.000 €."),
+
+    P("**Las 6 ventajas diferenciales, en una lista:**"),
+    CHECKBOXES([
+        "**Reformas con mano de obra propia:** solo se paga material (1.900 € en vez de 6.000–8.000 €).",
+        "**Fabricación directa China → márgenes ~70 %** (8–12 puntos más que un multimarca).",
+        "**Web desarrollada internamente:** sin coste de desarrollo, ~10 €/mes.",
+        "**Alquiler contenido en Oleiros:** 750 €/mes por un local de 40–50 m².",
+        "**Ingresos de la empresa de reformas** cubren lo personal: la tienda no paga sueldo al inicio.",
+        "**Stock reducido + rotación rápida:** cero mercancía vieja y capital siempre líquido.",
+    ]),
 
     TABLE(
-        ["Concepto", "Cifra", "Qué significa"],
+        ["El plan, en cifras", "Valor", "Dónde se detalla"],
         [
-            ["Apertura (hoy → tienda abierta)", "4–7 meses", "Depende de local, licencia y plazo de fabricación marítimo (3–4 meses de pedido)"],
-            ["Ventas necesarias para cubrir gastos", "2.390 €/mes · ~92 €/día", "3–4 clientes/día con ticket medio de 25 €"],
-            ["Ventas para sueldo de ~1.000 €/mes", "≈ 4.100 €/mes · ~158 €/día", "Margen 70 %, 26 días de apertura al mes"],
-            ["Ventas para sueldo de ~2.000 €/mes", "≈ 5.800 €/mes · ~224 €/día", "Objetivo del año 2–3 con online + temporadas fuertes"],
-            ["Facturación a partir de la cual pasar a SL", "> 60.000 €/año estables", "Una vez superado ese umbral, la SL paga menos impuestos"],
+            ["Inversión total (todo incluido)", "21.010 €", "Sección 06"],
+            ["Gastos fijos mensuales", "1.670 €/mes", "Sección 07"],
+            ["Punto de equilibrio", "92 €/día · 2.390 €/mes", "Sección 08"],
+            ["Ventas año 1 (escenario base)", "32.960 €", "Sección 10"],
+            ["Beneficio neto año 5", "14.770 €", "Sección 11"],
+            ["VAN · TIR · recuperación", "+36.920 € · 42 % · 2,6 años", "Sección 11"],
         ],
-        widths=[0.30, 0.28, 0.42], left_cols=[0, 1],
+        widths=[0.40, 0.30, 0.30], left_cols=[0, 1], hl=[0],
     ),
-    P("**Los números de este documento están calculados en detalle en las secciones 6–13** (inversión línea por línea, gastos mensuales, márgenes, proyección de ingresos, cuenta de resultados prevista, plan de tesorería y análisis de escenarios) y son reproducibles con los CSV incluidos en el repositorio."),
+
+    CALLOUT("tip", "Cómo leer este plan (para no perderse)",
+            "Tres rutas según lo que necesites: **solo números** → secciones 06, 07, 08, 10, 11, 12 y 13 (inversión, gastos, márgenes, proyecciones, tesorería y sensibilidad). **Para la solicitud de ayudas** → 02.2 (equipo y empleo), 02.3 (sostenibilidad e igualdad), 17 (ayudas) y 22 (ficha de 1 página). **Para arrancar esta semana** → 02.1 (local), 17, 18 (hoja de ruta) y 21 (próximos pasos). Cada sección abre con un recuadro «Lo esencial»: si solo tienes 2 minutos, léelos y ya tienes el plan."),
 ]
 
-# ----------------------------------------------------------------------------
 # SECCIÓN 2 · EL PROYECTO Y EL MODELO DE NEGOCIO
 # ----------------------------------------------------------------------------
 
 SECTION_2 = [
     S("02", "EL PROYECTO", "El modelo de negocio, explicado sin adornos",
-      "Cómo funciona KHC por dentro: qué se vende, dónde se vende, quién lo hace y por qué la estrategia de stock reducido es la clave del negocio."),
+      "Cómo funciona KHC por dentro: qué se vende, dónde se vende, quién lo hace y por qué la estrategia de stock reducido es la clave del negocio.",
+      ess=["Tienda de barrio + online propia + marketing local desde el día 1", "Clave: stock corto y novedades cada 3–4 semanas", "Ella en tienda, él en reformas y web; empezar como autónoma", "Ayudas a retornadas, mujeres y cuota cero: 4.000–12.000 € de potencial"]),
 
     P("**Qué es KHC.** Una tienda de ropa infantil de 0 a 12 años con **marca propia**: los diseños, tejidos, colores y etiquetas los elige KHC, y las fábricas chinas los producen con su logo. Ese es el modelo que más margen deja en ropa infantil: el precio de coste solo incluye fábrica + importación, sin intermediarios ni margen de marca ajena."),
 
@@ -251,7 +310,8 @@ SECTION_2 = [
 
 SECTION_3 = [
     S("03", "MERCADO Y CLIENTE", "Quién compra, cuánto gasta y cuándo",
-      "Una tienda de barrio no necesita captar al 1 % de un mercado enorme: necesita que el 5 % de las familias de su entorno la conozcan y repitan. Estas son las claves del comportamiento de compra."),
+      "Una tienda de barrio no necesita captar al 1 % de un mercado enorme: necesita que el 5 % de las familias de su entorno la conozcan y repitan. Estas son las claves del comportamiento de compra.",
+      ess=["~8.000 niños de 0–12 años en el entorno ≈ 1,6 M€/año de gasto", "Solo hace falta captar el 2–3 %: 3–4 clientes al día", "Cadenas y online no dan lo que da una tienda de barrio", "Diferenciación: tacto, asesoramiento, regalo y packaging KHC"]),
 
     P("**El cliente tipo de KHC** es una madre (o padre) de 28–45 años, de nivel medio-alto, que vive a menos de 10 minutos de la tienda y que compra para: (1) necesidades básicas del bebé, (2) regalo de nacimiento, bautizo o cumpleaños, y (3) caprichos de calidad para sus hijos. Valora el **tacto y la cercanía** por encima del precio: sabe lo que es el algodón peinado, busca algo bonito que no haya en el supermercado y paga 12–15 € por un body de calidad si lo puede tocar y se lo aconsejan."),
 
@@ -312,7 +372,8 @@ SECTION_3 = [
 
 SECTION_4 = [
     S("04", "MARCA, PRODUCTO Y SURTIDO", "El mix completo: qué se vende, cuánto de cada cosa y qué NO se vende",
-      "El surtido inicial de 8.690 € cubre la tienda completa y deja margen para rotar. Aquí está el detalle de cada categoría, el porqué de cada decisión y la lista explícita de lo que se excluye para no tirar el dinero."),
+      "El surtido inicial de 8.690 € cubre la tienda completa y deja margen para rotar. Aquí está el detalle de cada categoría, el porqué de cada decisión y la lista explícita de lo que se excluye para no tirar el dinero.",
+      ess=["≈ 1.400 unidades · 37–39 referencias · 8.690 € de stock", "30 modelos de ropa KHC + bebé/regalo + juguete pequeño", "Complementos y regalo: margen 80–90 % e impulso junto a caja", "No se traen: carritos, bañeras, calzado ni sillas de coche"]),
 
     P("**Filosofía de surtido: poco, bueno, rotativo.** 30 modelos de ropa con una media de 20–35 unidades por modelo (MOQ pequeño, trabajando con fábricas pequeñas/medianas o agente), 4–5 referencias de complementos de alta rotación, una colección de bebé/regalo que dispara el ticket y una selección mínima pero rentable de juguete de madera y peluche. Todo ello con un surtido completo de marca española en lo que el cliente busca por nombre (Suavinex, Nuk, Avent, Interbaby)."),
 
@@ -360,7 +421,8 @@ SECTION_4 = [
 
 SECTION_5 = [
     S("05", "FABRICACIÓN Y SUMINISTRO", "Marca propia desde China: el proceso completo",
-      "El 62 % de la inversión son productos con marca propia fabricados en China. Este es el proceso real: cómo se fabrica, cuánto cuesta puesto en la tienda, cuánto tarda y cómo se hace sin arriesgar el dinero."),
+      "El 62 % de la inversión son productos con marca propia fabricados en China. Este es el proceso real: cómo se fabrica, cuánto cuesta puesto en la tienda, cuánto tarda y cómo se hace sin arriesgar el dinero.",
+      ess=["Factor 1,55× FOB: cómo se calcula el coste real puesto en tienda", "MOQ bajo con fábricas pequeñas: 100–300 uds por modelo", "3–4 meses desde muestras a tienda → pedir con antelación", "30 % depósito + 70 % contra envío y control de calidad antes de pagar"]),
 
     P("**Qué es fabricar con marca propia (OEM/ODM).** Las fábricas chinas producen las prendas según las especificaciones de KHC (modelo, tejido, colores, tallas) y las etiquetan con el logo KHC. No hace falta diseñar desde cero: la mayoría de fábricas dejan elegir modelos de su catálogo y cambiar colores, detalles y etiquetas. Ese es el modelo de mayor margen: **el coste es fábrica + importación, sin margen de marca ajena ni distribuidores**."),
 
