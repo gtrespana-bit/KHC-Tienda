@@ -55,14 +55,14 @@ Los gastos fijos son ~1.700€/mes. Los primeros meses las ventas no cubren el 1
 
 | Mes | Facturación realista | Coste mercancía (30%) | Gastos fijos | Pérdida o beneficio del mes | Qué hay en caja al final del mes |
 |-----|----------------------|------------------------|--------------|-----------------------------|-----------------------------------|
-| Mes 1 (apertura) | 2.800€ | 840€ | 1.700€ | **+260€** (apertura suele tener pico) | 4.260€ |
-| Mes 2 | 1.800€ | 540€ | 1.700€ | **-440€** (bajada post-apertura normal) | 3.820€ |
-| Mes 3 | 2.200€ | 660€ | 1.700€ | **-160€** | 3.660€ |
-| Mes 4 | 2.600€ | 780€ | 1.700€ | **+120€** | 3.780€ |
-| Mes 5 | 3.000€ | 900€ | 1.700€ | **+400€** | 4.180€ |
-| Mes 6 | 3.200€ | 960€ | 1.700€ | **+540€** | 4.720€ |
+| Mes 1 (apertura) | 2.800€ | 840€ | 1.670€ | **+290€** (apertura suele tener pico) | 4.260€ |
+| Mes 2 | 1.800€ | 540€ | 1.670€ | **-410€** (bajada post-apertura normal) | 3.820€ |
+| Mes 3 | 2.200€ | 660€ | 1.670€ | **-130€** | 3.660€ |
+| Mes 4 | 2.600€ | 780€ | 1.670€ | **+150€** | 3.780€ |
+| Mes 5 | 3.000€ | 900€ | 1.670€ | **+430€** | 4.180€ |
+| Mes 6 | 3.200€ | 960€ | 1.670€ | **+570€** | 4.720€ |
 
-Conclusión: la pérdida máxima acumulada que tendrás es de ~440€ en un mes, y con 4.000€ de fondo tienes **casi 3 meses de gastos completos de margen de seguridad**, incluso si las ventas salen la mitad de bien de lo que estoy proyectando.
+Conclusión: la pérdida máxima acumulada que tendrás es de ~410€ en un mes, y con 4.000€ de fondo tienes **casi 3 meses de gastos completos de margen de seguridad**, incluso si las ventas salen la mitad de bien de lo que estoy proyectando.
 
 > ⚠️ Si las ventas fueran mucho peores (por ejemplo 1.200€/mes de media los primeros 4 meses), perderías 500€/mes y aguantarías 8 meses con esos 4.000€. Es más que suficiente.
 
@@ -91,17 +91,17 @@ Con vuestra ventaja (tú tienes ingresos de reformas, ella no necesita cobrar lo
 | **TOTAL GASTOS FIJOS MENSUALES** | **≈ 1.700 €/mes** |
 
 ### El número que importa:
-- **Para no perder dinero (cubrir todos los gastos):** 1.700 / 0,70 = **2.430 €/mes → ~94 €/día**
-- **Para empezar a sacar 1.000€/mes para ella:** ~5.000 €/mes → ~192 €/día
-- **Para sacar 2.000€/mes de sueldo:** ~6.500 €/mes → ~250 €/día
+- **Para no perder dinero (cubrir todos los gastos):** 1.670 / 0,70 = **2.390 €/mes → ~92 €/día**
+- **Para empezar a sacar 1.000€/mes para ella:** ~4.100 €/mes → ~158 €/día
+- **Para sacar 2.000€/mes de sueldo:** ~5.800 €/mes → ~224 €/día
 
-Con 94€/día de media (3-4 clientes de 25€ de ticket medio) ya cubres todos los gastos.
+Con 92€/día de media (3-4 clientes de 25€ de ticket medio) ya cubres todos los gastos.
 
 ---
 
-## 5. Stock inicial de 6.000€ — ¿cuánta ropa es eso? ¿LLENA LA TIENDA?
+## 5. Stock inicial de 8.690€ — ¿cuánta ropa es eso? ¿LLENA LA TIENDA?
 
-Los 6.000€ son coste **total puesto en la tienda de Oleiros** (fábrica + flete + arancel 12% + despacho + IVA importación + transporte a tienda).
+Los 8.690€ son coste **total puesto en la tienda de Oleiros** (fábrica + flete + arancel 12% + despacho + IVA importación + transporte a tienda); de ellos, **5.500€ son ropa KHC** (825 prendas, 30 modelos) y el resto bebé/regalo marca propia, artículos de marca española, juguete pequeño y complementos.
 
 ### Primero: ¿cuánta ropa hace falta para llenar una tienda de 45m²?
 Un local de 45m² (quitando probador, mostrador, pasillos) tiene espacio para:
@@ -111,7 +111,7 @@ Un local de 45m² (quitando probador, mostrador, pasillos) tiene espacio para:
 - Reposición en trastienda: 300-400 prendas
 - **Total necesario para que se vea LLENA (no apelotonada, que es como da sensación de calidad): ~800-1.000 prendas de ropa + complementos**
 
-### Con 6.000€ puesto en Oleiros compras ESTO (y te sobra):
+### Con 5.500€ de ropa KHC puesto en Oleiros compras ESTO (y te sobra):
 
 | Categoría | Nº modelos | Prendas totales | Coste puesto en tienda |
 |-----------|-----------|-----------------|------------------------|
@@ -127,9 +127,9 @@ Un local de 45m² (quitando probador, mostrador, pasillos) tiene espacio para:
 | **Subtotal ropa KHC** | **30 modelos** | **825 prendas** | **5.500 €** |
 | Complementos (calcetines 300 pares, diademas 100 uds, gorros 50, baberos 80) | 4-5 referencias | 530 uds | 350 € |
 | Artículos bebé compra España (chupetes, muselinas) | 3-4 marcas | 50 uds | 150 € |
-| **TOTAL** | **≈ 37-39 referencias** | **~1.400 uds** | **6.000 €** |
+| **TOTAL** | **≈ 37-39 referencias** | **~1.400 uds** | **8.690 €** |
 
-✅ **Esto es MÁS QUE SUFICIENTE para llenar la tienda de 45m²**, con producto en sala para que se vea completa y reposición en trastienda. Mi error anterior fue asumir MOQ de fábrica grande (80-100 uds/modelo); trabajando con agente o fábricas pequeñas/medianas aceptan 20-35 uds por modelo para tu primer pedido, que es lo que necesitas.
+✅ **Esto es MÁS QUE SUFICIENTE para llenar la tienda de 45m² con los 8.690€ completos**, con producto en sala para que se vea completa y reposición en trastienda. Mi error anterior fue asumir MOQ de fábrica grande (80-100 uds/modelo); trabajando con agente o fábricas pequeñas/medianas aceptan 20-35 uds por modelo para tu primer pedido, que es lo que necesitas.
 
 ### Productos extra de bebé/regalo/puericultura que añadimos (los 2.000€ extras + marca España + juguete pequeño)
 

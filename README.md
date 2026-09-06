@@ -20,21 +20,31 @@ Plan de negocio real para abrir **KHC**, tienda de ropa infantil con marca propi
 
 | Indicador | Valor |
 |-----------|-------|
-| **Inversión total para abrir** | **≈ 19.000 €** |
-| De los que: stock inicial puesto en Oleiros | 6.300 € (~1.200-1.400 prendas) |
+| **Inversión total para abrir** | **≈ 21.000 € (21.010 €)** |
+| De los que: stock inicial completo | 8.690 € (~1.400 unidades) |
 | De los que: fondo de maniobra (caja para primeros meses) | 4.000 € |
-| Gastos fijos mensuales (marketing incluido) | **≈ 1.700 €/mes** |
+| Gastos fijos mensuales (marketing incluido) | **1.670 €/mes (≈ 1.700 €)** |
 | Margen bruto medio marca propia China | ~70% |
-| Ventas diarias para no perder dinero | ~94 €/día |
-| Ventas para sueldo de ~1.000€/mes | ~190 €/día |
-| Ventas para sueldo de ~2.000€/mes | ~250 €/día |
+| Ventas diarias para no perder dinero | ~92 €/día (2.390 €/mes) |
+| Ventas para sueldo de ~1.000€/mes | ~158 €/día (≈ 4.100 €/mes) |
+| Ventas para sueldo de ~2.000€/mes | ~224 €/día (≈ 5.800 €/mes) |
 | Marketing mensual | 340 €/mes |
 | Coste web | ~10 €/mes (dominio+hosting; desarrollo propio) |
 | Tiempo hasta apertura | 3-4 meses después de tener local (contar plazo de fabricación+envío de 3 meses) |
 
 ## Documentos
 
-**Leer primero:** 📄 `docs/01_Plan_Negocio_KHC.md` — Plan completo con números ajustados
+**Versión premium (recomendada):**
+- 🎨 `docs/KHC_Plan_Negocio_Premium.html` — Plan visual interactivo (abre en el navegador; incluye botón «Imprimir / Guardar PDF»)
+- 🖨 `docs/KHC_Plan_Negocio_Premium.pdf` — Versión imprimible premium A4 (32 páginas, índice automático)
+
+**Leer primero (fuente en Markdown):** 📄 `docs/01_Plan_Negocio_KHC.md` — Plan completo con números ajustados
+
+**Regenerar las versiones premium (opcional, requiere Python 3.11):**
+```bash
+python3 -m venv .venv && .venv/bin/pip install -r requirements.txt
+.venv/bin/python scripts/build_plan.py   # regenera HTML + PDF
+```
 
 - 📄 `docs/02_Proveedores_Ropa_Infantil.md` — Fabricación en China, agentes, MOQ, plazos, normativa UE
 - 📄 `docs/03_Ayudas_Subvenciones.md` — Ayudas emigrantes retornados, tarifa plana, cuota cero Galicia
